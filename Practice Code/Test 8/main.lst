@@ -1,0 +1,428 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.2 #13350 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _jump
+                                     13 	.globl _wouldHitSurface
+                                     14 	.globl _performanceDelay
+                                     15 	.globl _set_sprite_data
+                                     16 	.globl _wait_vbl_done
+                                     17 	.globl _joypad
+                                     18 	.globl _floorYPosition
+                                     19 	.globl _gravity
+                                     20 	.globl _TestyTesterson
+                                     21 	.globl _currentSpeedY
+                                     22 	.globl _jumping
+                                     23 	.globl _playerlocation
+                                     24 ;--------------------------------------------------------
+                                     25 ; special function registers
+                                     26 ;--------------------------------------------------------
+                                     27 ;--------------------------------------------------------
+                                     28 ; ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area _DATA
+      000000                         31 _playerlocation::
+      000000                         32 	.ds 2
+      000002                         33 _jumping::
+      000002                         34 	.ds 1
+      000003                         35 _currentSpeedY::
+      000003                         36 	.ds 1
+                                     37 ;--------------------------------------------------------
+                                     38 ; ram data
+                                     39 ;--------------------------------------------------------
+                                     40 	.area _INITIALIZED
+      000000                         41 _TestyTesterson::
+      000000                         42 	.ds 32
+      000020                         43 _gravity::
+      000020                         44 	.ds 1
+      000021                         45 _floorYPosition::
+      000021                         46 	.ds 1
+                                     47 ;--------------------------------------------------------
+                                     48 ; absolute external ram data
+                                     49 ;--------------------------------------------------------
+                                     50 	.area _DABS (ABS)
+                                     51 ;--------------------------------------------------------
+                                     52 ; global & static initialisations
+                                     53 ;--------------------------------------------------------
+                                     54 	.area _HOME
+                                     55 	.area _GSINIT
+                                     56 	.area _GSFINAL
+                                     57 	.area _GSINIT
+                                     58 ;--------------------------------------------------------
+                                     59 ; Home
+                                     60 ;--------------------------------------------------------
+                                     61 	.area _HOME
+                                     62 	.area _HOME
+                                     63 ;--------------------------------------------------------
+                                     64 ; code
+                                     65 ;--------------------------------------------------------
+                                     66 	.area _CODE
+                                     67 ;main.c:13: void performanceDelay(UINT8 numloops){
+                                     68 ;	---------------------------------
+                                     69 ; Function performanceDelay
+                                     70 ; ---------------------------------
+      000000                         71 _performanceDelay::
+      000000 4F               [ 4]   72 	ld	c, a
+                                     73 ;main.c:15: for(i = 0; i < numloops; i++){
+      000001 06 00            [ 8]   74 	ld	b, #0x00
+      000003                         75 00103$:
+      000003 78               [ 4]   76 	ld	a, b
+      000004 91               [ 4]   77 	sub	a, c
+      000005 D0               [20]   78 	ret	NC
+                                     79 ;main.c:16: wait_vbl_done();
+      000006 CDr00r00         [24]   80 	call	_wait_vbl_done
+                                     81 ;main.c:15: for(i = 0; i < numloops; i++){
+      000009 04               [ 4]   82 	inc	b
+                                     83 ;main.c:18: }
+      00000A 18 F7            [12]   84 	jr	00103$
+                                     85 ;main.c:20: INT8 wouldHitSurface(UINT8 projectedYPositon){
+                                     86 ;	---------------------------------
+                                     87 ; Function wouldHitSurface
+                                     88 ; ---------------------------------
+      00000C                         89 _wouldHitSurface::
+                                     90 ;main.c:21: if(projectedYPositon >= floorYPosition){
+      00000C 21r21r00         [12]   91 	ld	hl, #_floorYPosition
+      00000F 96               [ 8]   92 	sub	a, (hl)
+      000010 38 02            [12]   93 	jr	C, 00102$
+                                     94 ;main.c:22: return floorYPosition;
+      000012 7E               [ 8]   95 	ld	a, (hl)
+      000013 C9               [16]   96 	ret
+      000014                         97 00102$:
+                                     98 ;main.c:24: return -1;
+      000014 3E FF            [ 8]   99 	ld	a, #0xff
+                                    100 ;main.c:25: }
+      000016 C9               [16]  101 	ret
+                                    102 ;main.c:27: void jump(UINT8 spriteId, UINT8 spriteLocation[2]) {
+                                    103 ;	---------------------------------
+                                    104 ; Function jump
+                                    105 ; ---------------------------------
+      000017                        106 _jump::
+      000017 E8 F7            [16]  107 	add	sp, #-9
+      000019 F8 08            [12]  108 	ldhl	sp,	#8
+      00001B 32               [ 8]  109 	ld	(hl-), a
+      00001C 2B               [ 8]  110 	dec	hl
+      00001D 7B               [ 4]  111 	ld	a, e
+      00001E 22               [ 8]  112 	ld	(hl+), a
+      00001F 72               [ 8]  113 	ld	(hl), d
+                                    114 ;main.c:32: if(jumping == 0){
+      000020 21r02r00         [12]  115 	ld	hl, #_jumping
+      000023 7E               [ 8]  116 	ld	a, (hl)
+      000024 B7               [ 4]  117 	or	a, a
+      000025 20 07            [12]  118 	jr	NZ, 00102$
+                                    119 ;main.c:33: jumping = 1;
+      000027 36 01            [12]  120 	ld	(hl), #0x01
+                                    121 ;main.c:34: currentSpeedY = 10;
+      000029 21r03r00         [12]  122 	ld	hl, #_currentSpeedY
+      00002C 36 0A            [12]  123 	ld	(hl), #0x0a
+      00002E                        124 00102$:
+                                    125 ;main.c:38: currentSpeedY = currentSpeedY + gravity;
+      00002E FAr03r00         [16]  126 	ld	a, (#_currentSpeedY)
+      000031 21r20r00         [12]  127 	ld	hl, #_gravity
+      000034 86               [ 8]  128 	add	a, (hl)
+      000035 EAr03r00         [16]  129 	ld	(#_currentSpeedY),a
+                                    130 ;main.c:40: spriteLocation[1] = spriteLocation[1] - currentSpeedY;
+      000038 F8 06            [12]  131 	ldhl	sp,#6
+      00003A 2A               [ 8]  132 	ld	a, (hl+)
+      00003B 5F               [ 4]  133 	ld	e, a
+      00003C 56               [ 8]  134 	ld	d, (hl)
+      00003D 6B               [ 4]  135 	ld	l, e
+      00003E 62               [ 4]  136 	ld	h, d
+      00003F 23               [ 8]  137 	inc	hl
+      000040 E5               [16]  138 	push	hl
+      000041 7D               [ 4]  139 	ld	a, l
+      000042 F8 06            [12]  140 	ldhl	sp,	#6
+      000044 77               [ 8]  141 	ld	(hl), a
+      000045 E1               [12]  142 	pop	hl
+      000046 7C               [ 4]  143 	ld	a, h
+      000047 F8 05            [12]  144 	ldhl	sp,	#5
+      000049 32               [ 8]  145 	ld	(hl-), a
+      00004A 2A               [ 8]  146 	ld	a, (hl+)
+      00004B 5F               [ 4]  147 	ld	e, a
+      00004C 56               [ 8]  148 	ld	d, (hl)
+      00004D 1A               [ 8]  149 	ld	a, (de)
+      00004E 21r03r00         [12]  150 	ld	hl, #_currentSpeedY
+      000051 96               [ 8]  151 	sub	a, (hl)
+      000052 4F               [ 4]  152 	ld	c, a
+      000053 F8 04            [12]  153 	ldhl	sp,	#4
+      000055 2A               [ 8]  154 	ld	a,	(hl+)
+      000056 66               [ 8]  155 	ld	h, (hl)
+      000057 6F               [ 4]  156 	ld	l, a
+      000058 71               [ 8]  157 	ld	(hl), c
+                                    158 ;main.c:42: possibleSurfaceY = wouldHitSurface(spriteLocation[1]);
+      000059 79               [ 4]  159 	ld	a, c
+      00005A CDr0Cr00         [24]  160 	call	_wouldHitSurface
+      00005D F8 02            [12]  161 	ldhl	sp,	#2
+      00005F 77               [ 8]  162 	ld	(hl), a
+                                    163 ;main.c:44: if(possibleSurfaceY > -1){
+      000060 5E               [ 8]  164 	ld	e, (hl)
+      000061 3E FF            [ 8]  165 	ld	a,#0xff
+      000063 57               [ 4]  166 	ld	d,a
+      000064 96               [ 8]  167 	sub	a, (hl)
+      000065 CB 7B            [ 8]  168 	bit	7, e
+      000067 28 07            [12]  169 	jr	Z, 00120$
+      000069 CB 7A            [ 8]  170 	bit	7, d
+      00006B 20 08            [12]  171 	jr	NZ, 00121$
+      00006D BF               [ 4]  172 	cp	a, a
+      00006E 18 05            [12]  173 	jr	00121$
+      000070                        174 00120$:
+      000070 CB 7A            [ 8]  175 	bit	7, d
+      000072 28 01            [12]  176 	jr	Z, 00121$
+      000074 37               [ 4]  177 	scf
+      000075                        178 00121$:
+      000075 30 4E            [12]  179 	jr	NC, 00104$
+                                    180 ;main.c:45: jumping = 0;
+      000077 21r02r00         [12]  181 	ld	hl, #_jumping
+      00007A 36 00            [12]  182 	ld	(hl), #0x00
+                                    183 ;main.c:46: move_sprite(spriteId, spriteLocation[0], possibleSurfaceY);
+      00007C F8 06            [12]  184 	ldhl	sp,#6
+      00007E 2A               [ 8]  185 	ld	a, (hl+)
+      00007F 5F               [ 4]  186 	ld	e, a
+      000080 56               [ 8]  187 	ld	d, (hl)
+      000081 1A               [ 8]  188 	ld	a, (de)
+      000082 F8 03            [12]  189 	ldhl	sp,	#3
+      000084 77               [ 8]  190 	ld	(hl), a
+                                    191 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1675: OAM_item_t * itm = &shadow_OAM[nb];
+      000085 F8 08            [12]  192 	ldhl	sp,	#8
+      000087 7E               [ 8]  193 	ld	a, (hl)
+      000088 F8 04            [12]  194 	ldhl	sp,	#4
+      00008A 22               [ 8]  195 	ld	(hl+), a
+      00008B AF               [ 4]  196 	xor	a, a
+      00008C 32               [ 8]  197 	ld	(hl-), a
+      00008D 7E               [ 8]  198 	ld	a, (hl)
+      00008E F8 00            [12]  199 	ldhl	sp,	#0
+      000090 77               [ 8]  200 	ld	(hl), a
+      000091 F8 05            [12]  201 	ldhl	sp,	#5
+      000093 7E               [ 8]  202 	ld	a, (hl)
+      000094 F8 01            [12]  203 	ldhl	sp,	#1
+      000096 77               [ 8]  204 	ld	(hl), a
+      000097 3E 02            [ 8]  205 	ld	a, #0x02
+      000099                        206 00122$:
+      000099 F8 00            [12]  207 	ldhl	sp,	#0
+      00009B CB 26            [16]  208 	sla	(hl)
+      00009D 23               [ 8]  209 	inc	hl
+      00009E CB 16            [16]  210 	rl	(hl)
+      0000A0 3D               [ 4]  211 	dec	a
+      0000A1 20 F6            [12]  212 	jr	NZ, 00122$
+      0000A3 D1               [12]  213 	pop	de
+      0000A4 D5               [16]  214 	push	de
+      0000A5 21r00r00         [12]  215 	ld	hl, #_shadow_OAM
+      0000A8 19               [ 8]  216 	add	hl, de
+      0000A9 E5               [16]  217 	push	hl
+      0000AA 7D               [ 4]  218 	ld	a, l
+      0000AB F8 06            [12]  219 	ldhl	sp,	#6
+      0000AD 77               [ 8]  220 	ld	(hl), a
+      0000AE E1               [12]  221 	pop	hl
+      0000AF 7C               [ 4]  222 	ld	a, h
+      0000B0 F8 05            [12]  223 	ldhl	sp,	#5
+                                    224 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1676: itm->y=y, itm->x=x;
+      0000B2 32               [ 8]  225 	ld	(hl-), a
+      0000B3 2A               [ 8]  226 	ld	a, (hl+)
+      0000B4 5F               [ 4]  227 	ld	e, a
+      0000B5 56               [ 8]  228 	ld	d, (hl)
+      0000B6 F8 02            [12]  229 	ldhl	sp,	#2
+      0000B8 2A               [ 8]  230 	ld	a, (hl+)
+      0000B9 23               [ 8]  231 	inc	hl
+      0000BA 12               [ 8]  232 	ld	(de), a
+      0000BB 2A               [ 8]  233 	ld	a, (hl+)
+      0000BC 4F               [ 4]  234 	ld	c, a
+      0000BD 3A               [ 8]  235 	ld	a, (hl-)
+      0000BE 2B               [ 8]  236 	dec	hl
+      0000BF 47               [ 4]  237 	ld	b, a
+      0000C0 03               [ 8]  238 	inc	bc
+      0000C1 7E               [ 8]  239 	ld	a, (hl)
+      0000C2 02               [ 8]  240 	ld	(bc), a
+                                    241 ;main.c:46: move_sprite(spriteId, spriteLocation[0], possibleSurfaceY);
+      0000C3 18 24            [12]  242 	jr	00108$
+      0000C5                        243 00104$:
+                                    244 ;main.c:48: move_sprite(spriteId, spriteLocation[0], spriteLocation[1]);
+      0000C5 F8 04            [12]  245 	ldhl	sp,#4
+      0000C7 2A               [ 8]  246 	ld	a, (hl+)
+      0000C8 5F               [ 4]  247 	ld	e, a
+      0000C9 56               [ 8]  248 	ld	d, (hl)
+      0000CA 1A               [ 8]  249 	ld	a, (de)
+      0000CB 22               [ 8]  250 	ld	(hl+), a
+      0000CC 2A               [ 8]  251 	ld	a, (hl+)
+      0000CD 5F               [ 4]  252 	ld	e, a
+      0000CE 56               [ 8]  253 	ld	d, (hl)
+      0000CF 1A               [ 8]  254 	ld	a, (de)
+      0000D0 F8 04            [12]  255 	ldhl	sp,	#4
+      0000D2 77               [ 8]  256 	ld	(hl), a
+                                    257 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1675: OAM_item_t * itm = &shadow_OAM[nb];
+      0000D3 F8 08            [12]  258 	ldhl	sp,	#8
+      0000D5 4E               [ 8]  259 	ld	c, (hl)
+      0000D6 06 00            [ 8]  260 	ld	b, #0x00
+      0000D8 69               [ 4]  261 	ld	l, c
+      0000D9 60               [ 4]  262 	ld	h, b
+      0000DA 29               [ 8]  263 	add	hl, hl
+      0000DB 29               [ 8]  264 	add	hl, hl
+      0000DC 11r00r00         [12]  265 	ld	de, #_shadow_OAM
+      0000DF 19               [ 8]  266 	add	hl, de
+      0000E0 4D               [ 4]  267 	ld	c, l
+      0000E1 44               [ 4]  268 	ld	b, h
+                                    269 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1676: itm->y=y, itm->x=x;
+      0000E2 F8 05            [12]  270 	ldhl	sp,	#5
+      0000E4 3A               [ 8]  271 	ld	a, (hl-)
+      0000E5 02               [ 8]  272 	ld	(bc), a
+      0000E6 03               [ 8]  273 	inc	bc
+      0000E7 7E               [ 8]  274 	ld	a, (hl)
+      0000E8 02               [ 8]  275 	ld	(bc), a
+                                    276 ;main.c:48: move_sprite(spriteId, spriteLocation[0], spriteLocation[1]);
+      0000E9                        277 00108$:
+                                    278 ;main.c:51: }
+      0000E9 E8 09            [16]  279 	add	sp, #9
+      0000EB C9               [16]  280 	ret
+                                    281 ;main.c:54: void main(){
+                                    282 ;	---------------------------------
+                                    283 ; Function main
+                                    284 ; ---------------------------------
+      0000EC                        285 _main::
+                                    286 ;main.c:57: set_sprite_data(0, 2, TestyTesterson);
+      0000EC 11r00r00         [12]  287 	ld	de, #_TestyTesterson
+      0000EF D5               [16]  288 	push	de
+      0000F0 3E 02            [ 8]  289 	ld	a, #0x02
+      0000F2 F5               [16]  290 	push	af
+      0000F3 33               [ 8]  291 	inc	sp
+      0000F4 AF               [ 4]  292 	xor	a, a
+      0000F5 F5               [16]  293 	push	af
+      0000F6 33               [ 8]  294 	inc	sp
+      0000F7 CDr00r00         [24]  295 	call	_set_sprite_data
+      0000FA E8 04            [16]  296 	add	sp, #4
+                                    297 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1602: shadow_OAM[nb].tile=tile;
+      0000FC 21r02r00         [12]  298 	ld	hl, #(_shadow_OAM + 2)
+      0000FF 36 00            [12]  299 	ld	(hl), #0x00
+                                    300 ;main.c:62: playerlocation[0] = 10;
+      000101 21r00r00         [12]  301 	ld	hl, #_playerlocation
+      000104 36 0A            [12]  302 	ld	(hl), #0x0a
+                                    303 ;main.c:63: playerlocation[1] = 100;
+      000106 21r01r00         [12]  304 	ld	hl, #(_playerlocation + 1)
+      000109 36 64            [12]  305 	ld	(hl), #0x64
+                                    306 ;main.c:64: jumping = 0;
+      00010B 21r02r00         [12]  307 	ld	hl, #_jumping
+      00010E 36 00            [12]  308 	ld	(hl), #0x00
+                                    309 ;main.c:67: move_sprite(0, playerlocation[0], playerlocation[1]);
+      000110 21r01r00         [12]  310 	ld	hl, #(_playerlocation + 1)
+      000113 46               [ 8]  311 	ld	b, (hl)
+      000114 21r00r00         [12]  312 	ld	hl, #_playerlocation
+      000117 4E               [ 8]  313 	ld	c, (hl)
+                                    314 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1675: OAM_item_t * itm = &shadow_OAM[nb];
+      000118 21r00r00         [12]  315 	ld	hl, #_shadow_OAM
+                                    316 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1676: itm->y=y, itm->x=x;
+      00011B 78               [ 4]  317 	ld	a, b
+      00011C 22               [ 8]  318 	ld	(hl+), a
+      00011D 71               [ 8]  319 	ld	(hl), c
+                                    320 ;main.c:69: DISPLAY_ON;
+      00011E F0r00            [12]  321 	ldh	a, (_LCDC_REG + 0)
+      000120 F6 80            [ 8]  322 	or	a, #0x80
+      000122 E0r00            [12]  323 	ldh	(_LCDC_REG + 0), a
+                                    324 ;main.c:72: SHOW_SPRITES;
+      000124 F0r00            [12]  325 	ldh	a, (_LCDC_REG + 0)
+      000126 F6 02            [ 8]  326 	or	a, #0x02
+      000128 E0r00            [12]  327 	ldh	(_LCDC_REG + 0), a
+                                    328 ;main.c:74: while(1){
+      00012A                        329 00109$:
+                                    330 ;main.c:76: if(joypad() & J_LEFT){
+      00012A CDr00r00         [24]  331 	call	_joypad
+      00012D CB 4F            [ 8]  332 	bit	1, a
+      00012F 28 13            [12]  333 	jr	Z, 00102$
+                                    334 ;main.c:77: playerlocation[0] = playerlocation[0] - 2;
+      000131 FAr00r00         [16]  335 	ld	a, (#_playerlocation + 0)
+      000134 3D               [ 4]  336 	dec	a
+      000135 3D               [ 4]  337 	dec	a
+      000136 EAr00r00         [16]  338 	ld	(#_playerlocation),a
+                                    339 ;main.c:79: move_sprite(0, playerlocation[0], playerlocation[1]);
+      000139 21r01r00         [12]  340 	ld	hl, #(_playerlocation + 1)
+      00013C 46               [ 8]  341 	ld	b, (hl)
+      00013D 4F               [ 4]  342 	ld	c, a
+                                    343 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1675: OAM_item_t * itm = &shadow_OAM[nb];
+      00013E 21r00r00         [12]  344 	ld	hl, #_shadow_OAM
+                                    345 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1676: itm->y=y, itm->x=x;
+      000141 70               [ 8]  346 	ld	(hl), b
+      000142 23               [ 8]  347 	inc	hl
+      000143 71               [ 8]  348 	ld	(hl), c
+                                    349 ;main.c:79: move_sprite(0, playerlocation[0], playerlocation[1]);
+      000144                        350 00102$:
+                                    351 ;main.c:81: if(joypad() & J_RIGHT){
+      000144 CDr00r00         [24]  352 	call	_joypad
+      000147 0F               [ 4]  353 	rrca
+      000148 30 13            [12]  354 	jr	NC, 00104$
+                                    355 ;main.c:82: playerlocation[0] = playerlocation[0] + 2;
+      00014A FAr00r00         [16]  356 	ld	a, (#_playerlocation + 0)
+      00014D C6 02            [ 8]  357 	add	a, #0x02
+      00014F EAr00r00         [16]  358 	ld	(#_playerlocation),a
+                                    359 ;main.c:84: move_sprite(0, playerlocation[0], playerlocation[1]);
+      000152 21r01r00         [12]  360 	ld	hl, #(_playerlocation + 1)
+      000155 4E               [ 8]  361 	ld	c, (hl)
+      000156 47               [ 4]  362 	ld	b, a
+                                    363 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1675: OAM_item_t * itm = &shadow_OAM[nb];
+      000157 21r00r00         [12]  364 	ld	hl, #_shadow_OAM
+                                    365 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1676: itm->y=y, itm->x=x;
+      00015A 71               [ 8]  366 	ld	(hl), c
+      00015B 23               [ 8]  367 	inc	hl
+      00015C 70               [ 8]  368 	ld	(hl), b
+                                    369 ;main.c:84: move_sprite(0, playerlocation[0], playerlocation[1]);
+      00015D                        370 00104$:
+                                    371 ;main.c:86: if((joypad() & J_A) || jumping == 1){
+      00015D CDr00r00         [24]  372 	call	_joypad
+      000160 CB 67            [ 8]  373 	bit	4, a
+      000162 20 06            [12]  374 	jr	NZ, 00105$
+      000164 FAr02r00         [16]  375 	ld	a, (#_jumping)
+      000167 3D               [ 4]  376 	dec	a
+      000168 20 07            [12]  377 	jr	NZ, 00106$
+      00016A                        378 00105$:
+                                    379 ;main.c:87: jump(0, playerlocation);
+      00016A 11r00r00         [12]  380 	ld	de, #_playerlocation
+      00016D AF               [ 4]  381 	xor	a, a
+      00016E CDr17r00         [24]  382 	call	_jump
+      000171                        383 00106$:
+                                    384 ;main.c:91: performanceDelay(5);
+      000171 3E 05            [ 8]  385 	ld	a, #0x05
+      000173 CDr00r00         [24]  386 	call	_performanceDelay
+                                    387 ;main.c:95: }
+      000176 18 B2            [12]  388 	jr	00109$
+                                    389 	.area _CODE
+                                    390 	.area _INITIALIZER
+      000000                        391 __xinit__TestyTesterson:
+      000000 7E                     392 	.db #0x7e	; 126
+      000001 7E                     393 	.db #0x7e	; 126
+      000002 FF                     394 	.db #0xff	; 255
+      000003 81                     395 	.db #0x81	; 129
+      000004 FF                     396 	.db #0xff	; 255
+      000005 A5                     397 	.db #0xa5	; 165
+      000006 FF                     398 	.db #0xff	; 255
+      000007 81                     399 	.db #0x81	; 129
+      000008 FF                     400 	.db #0xff	; 255
+      000009 99                     401 	.db #0x99	; 153
+      00000A 7E                     402 	.db #0x7e	; 126
+      00000B 7E                     403 	.db #0x7e	; 126
+      00000C FF                     404 	.db #0xff	; 255
+      00000D 81                     405 	.db #0x81	; 129
+      00000E FF                     406 	.db #0xff	; 255
+      00000F 81                     407 	.db #0x81	; 129
+      000010 FF                     408 	.db #0xff	; 255
+      000011 81                     409 	.db #0x81	; 129
+      000012 FF                     410 	.db #0xff	; 255
+      000013 81                     411 	.db #0x81	; 129
+      000014 AB                     412 	.db #0xab	; 171
+      000015 D5                     413 	.db #0xd5	; 213
+      000016 AB                     414 	.db #0xab	; 171
+      000017 D5                     415 	.db #0xd5	; 213
+      000018 81                     416 	.db #0x81	; 129
+      000019 FF                     417 	.db #0xff	; 255
+      00001A 81                     418 	.db #0x81	; 129
+      00001B FF                     419 	.db #0xff	; 255
+      00001C 42                     420 	.db #0x42	; 66	'B'
+      00001D 7E                     421 	.db #0x7e	; 126
+      00001E 3C                     422 	.db #0x3c	; 60
+      00001F 3C                     423 	.db #0x3c	; 60
+      000020                        424 __xinit__gravity:
+      000020 FE                     425 	.db #0xfe	; 254
+      000021                        426 __xinit__floorYPosition:
+      000021 64                     427 	.db #0x64	; 100	'd'
+                                    428 	.area _CABS (ABS)

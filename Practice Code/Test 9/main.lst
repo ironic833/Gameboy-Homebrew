@@ -1,0 +1,290 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.2 #13350 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _setupPlayer
+                                     13 	.globl _moveGameCharacter
+                                     14 	.globl _performanceDelay
+                                     15 	.globl _set_sprite_data
+                                     16 	.globl _wait_vbl_done
+                                     17 	.globl _joypad
+                                     18 	.globl _spritesize
+                                     19 	.globl _TestyTesterson
+                                     20 	.globl _Player
+                                     21 ;--------------------------------------------------------
+                                     22 ; special function registers
+                                     23 ;--------------------------------------------------------
+                                     24 ;--------------------------------------------------------
+                                     25 ; ram data
+                                     26 ;--------------------------------------------------------
+                                     27 	.area _DATA
+      000000                         28 _Player::
+      000000                         29 	.ds 6
+                                     30 ;--------------------------------------------------------
+                                     31 ; ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area _INITIALIZED
+      000000                         34 _TestyTesterson::
+      000000                         35 	.ds 32
+      000020                         36 _spritesize::
+      000020                         37 	.ds 1
+                                     38 ;--------------------------------------------------------
+                                     39 ; absolute external ram data
+                                     40 ;--------------------------------------------------------
+                                     41 	.area _DABS (ABS)
+                                     42 ;--------------------------------------------------------
+                                     43 ; global & static initialisations
+                                     44 ;--------------------------------------------------------
+                                     45 	.area _HOME
+                                     46 	.area _GSINIT
+                                     47 	.area _GSFINAL
+                                     48 	.area _GSINIT
+                                     49 ;--------------------------------------------------------
+                                     50 ; Home
+                                     51 ;--------------------------------------------------------
+                                     52 	.area _HOME
+                                     53 	.area _HOME
+                                     54 ;--------------------------------------------------------
+                                     55 ; code
+                                     56 ;--------------------------------------------------------
+                                     57 	.area _CODE
+                                     58 ;main.c:10: void performanceDelay(UINT8 numloops){
+                                     59 ;	---------------------------------
+                                     60 ; Function performanceDelay
+                                     61 ; ---------------------------------
+      000000                         62 _performanceDelay::
+      000000 4F               [ 4]   63 	ld	c, a
+                                     64 ;main.c:12: for(i = 0; i < numloops; i++){
+      000001 06 00            [ 8]   65 	ld	b, #0x00
+      000003                         66 00103$:
+      000003 78               [ 4]   67 	ld	a, b
+      000004 91               [ 4]   68 	sub	a, c
+      000005 D0               [20]   69 	ret	NC
+                                     70 ;main.c:13: wait_vbl_done();
+      000006 CDr00r00         [24]   71 	call	_wait_vbl_done
+                                     72 ;main.c:12: for(i = 0; i < numloops; i++){
+      000009 04               [ 4]   73 	inc	b
+                                     74 ;main.c:15: }
+      00000A 18 F7            [12]   75 	jr	00103$
+                                     76 ;main.c:17: void moveGameCharacter(struct character* characterToMove, UINT8 x, UINT8 y){
+                                     77 ;	---------------------------------
+                                     78 ; Function moveGameCharacter
+                                     79 ; ---------------------------------
+      00000C                         80 _moveGameCharacter::
+      00000C 3B               [ 8]   81 	dec	sp
+      00000D 3B               [ 8]   82 	dec	sp
+      00000E F8 01            [12]   83 	ldhl	sp,	#1
+      000010 77               [ 8]   84 	ld	(hl), a
+                                     85 ;main.c:19: move_sprite(characterToMove->spritids[0], x, y);
+      000011 F8 04            [12]   86 	ldhl	sp,	#4
+      000013 7E               [ 8]   87 	ld	a, (hl)
+      000014 F8 00            [12]   88 	ldhl	sp,	#0
+      000016 77               [ 8]   89 	ld	(hl), a
+      000017 1A               [ 8]   90 	ld	a, (de)
+                                     91 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1675: OAM_item_t * itm = &shadow_OAM[nb];
+      000018 6F               [ 4]   92 	ld	l, a
+                                     93 ;	spillPairReg hl
+                                     94 ;	spillPairReg hl
+      000019 26 00            [ 8]   95 	ld	h, #0x00
+                                     96 ;	spillPairReg hl
+                                     97 ;	spillPairReg hl
+      00001B 29               [ 8]   98 	add	hl, hl
+      00001C 29               [ 8]   99 	add	hl, hl
+      00001D 01r00r00         [12]  100 	ld	bc, #_shadow_OAM
+      000020 09               [ 8]  101 	add	hl, bc
+      000021 4D               [ 4]  102 	ld	c, l
+      000022 44               [ 4]  103 	ld	b, h
+                                    104 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1676: itm->y=y, itm->x=x;
+      000023 F8 00            [12]  105 	ldhl	sp,	#0
+      000025 2A               [ 8]  106 	ld	a, (hl+)
+      000026 02               [ 8]  107 	ld	(bc), a
+      000027 03               [ 8]  108 	inc	bc
+                                    109 ;main.c:20: move_sprite(characterToMove->spritids[1], x, y + spritesize);
+      000028 3A               [ 8]  110 	ld	a, (hl-)
+      000029 02               [ 8]  111 	ld	(bc), a
+      00002A 7E               [ 8]  112 	ld	a, (hl)
+      00002B 21r20r00         [12]  113 	ld	hl, #_spritesize
+      00002E 86               [ 8]  114 	add	a, (hl)
+      00002F 4F               [ 4]  115 	ld	c, a
+      000030 13               [ 8]  116 	inc	de
+      000031 1A               [ 8]  117 	ld	a, (de)
+                                    118 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1675: OAM_item_t * itm = &shadow_OAM[nb];
+      000032 6F               [ 4]  119 	ld	l, a
+      000033 11r00r00         [12]  120 	ld	de, #_shadow_OAM+0
+                                    121 ;	spillPairReg hl
+                                    122 ;	spillPairReg hl
+      000036 26 00            [ 8]  123 	ld	h, #0x00
+                                    124 ;	spillPairReg hl
+                                    125 ;	spillPairReg hl
+      000038 29               [ 8]  126 	add	hl, hl
+      000039 29               [ 8]  127 	add	hl, hl
+      00003A 19               [ 8]  128 	add	hl, de
+                                    129 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1676: itm->y=y, itm->x=x;
+      00003B 79               [ 4]  130 	ld	a, c
+      00003C 22               [ 8]  131 	ld	(hl+), a
+      00003D 4D               [ 4]  132 	ld	c, l
+      00003E 44               [ 4]  133 	ld	b, h
+      00003F F8 01            [12]  134 	ldhl	sp,	#1
+      000041 7E               [ 8]  135 	ld	a, (hl)
+      000042 02               [ 8]  136 	ld	(bc), a
+                                    137 ;main.c:20: move_sprite(characterToMove->spritids[1], x, y + spritesize);
+                                    138 ;main.c:22: }
+      000043 33               [ 8]  139 	inc	sp
+      000044 33               [ 8]  140 	inc	sp
+      000045 E1               [12]  141 	pop	hl
+      000046 33               [ 8]  142 	inc	sp
+      000047 E9               [ 4]  143 	jp	(hl)
+                                    144 ;main.c:24: void setupPlayer() {
+                                    145 ;	---------------------------------
+                                    146 ; Function setupPlayer
+                                    147 ; ---------------------------------
+      000048                        148 _setupPlayer::
+                                    149 ;main.c:26: Player.x = 10;
+      000048 21r02r00         [12]  150 	ld	hl, #(_Player + 2)
+      00004B 36 0A            [12]  151 	ld	(hl), #0x0a
+                                    152 ;main.c:27: Player.y = 100;
+      00004D 01r03r00         [12]  153 	ld	bc, #_Player + 3
+      000050 3E 64            [ 8]  154 	ld	a, #0x64
+      000052 02               [ 8]  155 	ld	(bc), a
+                                    156 ;main.c:28: Player.width = 8;
+      000053 21r04r00         [12]  157 	ld	hl, #(_Player + 4)
+      000056 36 08            [12]  158 	ld	(hl), #0x08
+                                    159 ;main.c:29: Player.height = 16;
+      000058 21r05r00         [12]  160 	ld	hl, #(_Player + 5)
+      00005B 36 10            [12]  161 	ld	(hl), #0x10
+                                    162 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1602: shadow_OAM[nb].tile=tile;
+      00005D 21r02r00         [12]  163 	ld	hl, #(_shadow_OAM + 2)
+      000060 36 00            [12]  164 	ld	(hl), #0x00
+                                    165 ;main.c:32: Player.spritids[0] = 0;
+      000062 21r00r00         [12]  166 	ld	hl, #_Player
+      000065 36 00            [12]  167 	ld	(hl), #0x00
+                                    168 ;D:/Enviromental-Variables/gbdk/include/gb/gb.h:1602: shadow_OAM[nb].tile=tile;
+      000067 21r06r00         [12]  169 	ld	hl, #(_shadow_OAM + 6)
+      00006A 36 01            [12]  170 	ld	(hl), #0x01
+                                    171 ;main.c:35: Player.spritids[1] = 1;
+      00006C 21r01r00         [12]  172 	ld	hl, #(_Player + 1)
+      00006F 36 01            [12]  173 	ld	(hl), #0x01
+                                    174 ;main.c:37: moveGameCharacter(&Player, Player.x, Player.y);
+      000071 0A               [ 8]  175 	ld	a, (bc)
+      000072 21r02r00         [12]  176 	ld	hl, #(_Player + 2)
+      000075 4E               [ 8]  177 	ld	c, (hl)
+      000076 F5               [16]  178 	push	af
+      000077 33               [ 8]  179 	inc	sp
+      000078 79               [ 4]  180 	ld	a, c
+      000079 11r00r00         [12]  181 	ld	de, #_Player
+      00007C CDr0Cr00         [24]  182 	call	_moveGameCharacter
+                                    183 ;main.c:38: }
+      00007F C9               [16]  184 	ret
+                                    185 ;main.c:40: void main(){
+                                    186 ;	---------------------------------
+                                    187 ; Function main
+                                    188 ; ---------------------------------
+      000080                        189 _main::
+                                    190 ;main.c:42: set_sprite_data(0, 2, TestyTesterson);
+      000080 11r00r00         [12]  191 	ld	de, #_TestyTesterson
+      000083 D5               [16]  192 	push	de
+      000084 21 00 02         [12]  193 	ld	hl, #0x200
+      000087 E5               [16]  194 	push	hl
+      000088 CDr00r00         [24]  195 	call	_set_sprite_data
+      00008B E8 04            [16]  196 	add	sp, #4
+                                    197 ;main.c:44: setupPlayer();
+      00008D CDr48r00         [24]  198 	call	_setupPlayer
+                                    199 ;main.c:46: DISPLAY_ON;
+      000090 F0r00            [12]  200 	ldh	a, (_LCDC_REG + 0)
+      000092 F6 80            [ 8]  201 	or	a, #0x80
+      000094 E0r00            [12]  202 	ldh	(_LCDC_REG + 0), a
+                                    203 ;main.c:49: SHOW_SPRITES;
+      000096 F0r00            [12]  204 	ldh	a, (_LCDC_REG + 0)
+      000098 F6 02            [ 8]  205 	or	a, #0x02
+      00009A E0r00            [12]  206 	ldh	(_LCDC_REG + 0), a
+                                    207 ;main.c:51: while(1){
+      00009C                        208 00106$:
+                                    209 ;main.c:52: if(joypad() & J_LEFT){
+      00009C CDr00r00         [24]  210 	call	_joypad
+      00009F CB 4F            [ 8]  211 	bit	1, a
+      0000A1 28 15            [12]  212 	jr	Z, 00102$
+                                    213 ;main.c:53: Player.x -= 2;
+      0000A3 21r02r00         [12]  214 	ld	hl, #_Player + 2
+      0000A6 7E               [ 8]  215 	ld	a, (hl)
+      0000A7 3D               [ 4]  216 	dec	a
+      0000A8 3D               [ 4]  217 	dec	a
+      0000A9 77               [ 8]  218 	ld	(hl), a
+                                    219 ;main.c:54: moveGameCharacter(&Player, Player.x, Player.y);
+      0000AA 01r03r00         [12]  220 	ld	bc, #_Player + 3
+      0000AD 0A               [ 8]  221 	ld	a, (bc)
+      0000AE 4E               [ 8]  222 	ld	c, (hl)
+      0000AF F5               [16]  223 	push	af
+      0000B0 33               [ 8]  224 	inc	sp
+      0000B1 79               [ 4]  225 	ld	a, c
+      0000B2 11r00r00         [12]  226 	ld	de, #_Player
+      0000B5 CDr0Cr00         [24]  227 	call	_moveGameCharacter
+      0000B8                        228 00102$:
+                                    229 ;main.c:57: if(joypad() & J_RIGHT){
+      0000B8 CDr00r00         [24]  230 	call	_joypad
+      0000BB 0F               [ 4]  231 	rrca
+      0000BC 30 15            [12]  232 	jr	NC, 00104$
+                                    233 ;main.c:58: Player.x += 2;
+      0000BE 21r02r00         [12]  234 	ld	hl, #_Player + 2
+      0000C1 7E               [ 8]  235 	ld	a, (hl)
+      0000C2 C6 02            [ 8]  236 	add	a, #0x02
+      0000C4 77               [ 8]  237 	ld	(hl), a
+                                    238 ;main.c:59: moveGameCharacter(&Player, Player.x, Player.y);
+      0000C5 01r03r00         [12]  239 	ld	bc, #_Player + 3
+      0000C8 0A               [ 8]  240 	ld	a, (bc)
+      0000C9 4E               [ 8]  241 	ld	c, (hl)
+      0000CA F5               [16]  242 	push	af
+      0000CB 33               [ 8]  243 	inc	sp
+      0000CC 79               [ 4]  244 	ld	a, c
+      0000CD 11r00r00         [12]  245 	ld	de, #_Player
+      0000D0 CDr0Cr00         [24]  246 	call	_moveGameCharacter
+      0000D3                        247 00104$:
+                                    248 ;main.c:62: performanceDelay(5);
+      0000D3 3E 05            [ 8]  249 	ld	a, #0x05
+      0000D5 CDr00r00         [24]  250 	call	_performanceDelay
+                                    251 ;main.c:66: }
+      0000D8 18 C2            [12]  252 	jr	00106$
+                                    253 	.area _CODE
+                                    254 	.area _INITIALIZER
+      000000                        255 __xinit__TestyTesterson:
+      000000 7E                     256 	.db #0x7e	; 126
+      000001 7E                     257 	.db #0x7e	; 126
+      000002 FF                     258 	.db #0xff	; 255
+      000003 81                     259 	.db #0x81	; 129
+      000004 FF                     260 	.db #0xff	; 255
+      000005 A5                     261 	.db #0xa5	; 165
+      000006 FF                     262 	.db #0xff	; 255
+      000007 81                     263 	.db #0x81	; 129
+      000008 FF                     264 	.db #0xff	; 255
+      000009 99                     265 	.db #0x99	; 153
+      00000A 7E                     266 	.db #0x7e	; 126
+      00000B 7E                     267 	.db #0x7e	; 126
+      00000C FF                     268 	.db #0xff	; 255
+      00000D 81                     269 	.db #0x81	; 129
+      00000E FF                     270 	.db #0xff	; 255
+      00000F 81                     271 	.db #0x81	; 129
+      000010 FF                     272 	.db #0xff	; 255
+      000011 81                     273 	.db #0x81	; 129
+      000012 FF                     274 	.db #0xff	; 255
+      000013 81                     275 	.db #0x81	; 129
+      000014 AB                     276 	.db #0xab	; 171
+      000015 D5                     277 	.db #0xd5	; 213
+      000016 AB                     278 	.db #0xab	; 171
+      000017 D5                     279 	.db #0xd5	; 213
+      000018 81                     280 	.db #0x81	; 129
+      000019 FF                     281 	.db #0xff	; 255
+      00001A 81                     282 	.db #0x81	; 129
+      00001B FF                     283 	.db #0xff	; 255
+      00001C 42                     284 	.db #0x42	; 66	'B'
+      00001D 7E                     285 	.db #0x7e	; 126
+      00001E 3C                     286 	.db #0x3c	; 60
+      00001F 3C                     287 	.db #0x3c	; 60
+      000020                        288 __xinit__spritesize:
+      000020 08                     289 	.db #0x08	; 8
+                                    290 	.area _CABS (ABS)
