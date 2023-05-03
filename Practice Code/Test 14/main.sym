@@ -11,17 +11,35 @@ Symbol Table
     _SCX_REG                                                       ****** GX
   7 __xinit__keyboarddata                                          000168 R
   7 __xinit__keyboardmap                                           000000 R
+  7 __xinit__keydown                                               000438 R
+  7 __xinit__nameCharIndex                                         000439 R
+  7 __xinit__playerHasName                                         00043A R
+  0 _addToPlayerName                                               000020 GR
   1 _cursor                                                        000000 GR
+  0 _drawPlayerName                                                00005C GR
+  0 _isWithinKeyboard                                              00009E GR
+    _joypad                                                        ****** GX
   2 _keyboarddata                                                  000168 GR
   2 _keyboardmap                                                   000000 GR
-  0 _main                                                          00001C GR
+  2 _keydown                                                       000438 GR
+  0 _main                                                          0000DC GR
+  0 _maxcursorx                                                    00001E GR
+  0 _maxcursory                                                    00001F GR
+  0 _mincursorx                                                    00001C GR
+  0 _mincursory                                                    00001D GR
+  2 _nameCharIndex                                                 000439 GR
   0 _performanceDelay                                              000000 GR
+  2 _playerHasName                                                 00043A GR
+  1 _playerName                                                    000004 GR
+  0 _removeFromPlayerName                                          000049 GR
     _set_bkg_data                                                  ****** GX
     _set_bkg_tiles                                                 ****** GX
     _set_sprite_data                                               ****** GX
     _shadow_OAM                                                    ****** GX
   0 _sprites                                                       00000C GR
+  0 _updatePlayerName                                              00006E GR
     _wait_vbl_done                                                 ****** GX
+    _waitpadup                                                     ****** GX
 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
@@ -29,13 +47,13 @@ Hexadecimal [24-Bits]
 
 Area Table
 
-   0 _CODE                                      size     84   flags    0
-   1 _DATA                                      size      4   flags    0
-   2 _INITIALIZED                               size    438   flags    0
+   0 _CODE                                      size    24E   flags    0
+   1 _DATA                                      size     16   flags    0
+   2 _INITIALIZED                               size    43B   flags    0
    3 _DABS                                      size      0   flags    8
    4 _HOME                                      size      0   flags    0
    5 _GSINIT                                    size      0   flags    0
    6 _GSFINAL                                   size      0   flags    0
-   7 _INITIALIZER                               size    438   flags    0
+   7 _INITIALIZER                               size    43B   flags    0
    8 _CABS                                      size      0   flags    8
 
