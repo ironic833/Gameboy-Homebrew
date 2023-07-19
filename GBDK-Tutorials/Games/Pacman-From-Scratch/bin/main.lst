@@ -1,0 +1,113 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.2 #13350 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _BlinkLevelBlueAndWhite_Halting
+                                     13 	.globl _UpdateGlobalFrameCounters
+                                     14 	.globl _SetupGameplay
+                                     15 	.globl _CheckBackgroundTileIsWalkable
+                                     16 	.globl _StartGameplay
+                                     17 	.globl _SetupVRAM
+                                     18 	.globl _UpdateCameraPosition
+                                     19 	.globl _counter
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function registers
+                                     22 ;--------------------------------------------------------
+                                     23 ;--------------------------------------------------------
+                                     24 ; ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area _DATA
+      000000                         27 _counter::
+      000000                         28 	.ds 1
+                                     29 ;--------------------------------------------------------
+                                     30 ; ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area _INITIALIZED
+                                     33 ;--------------------------------------------------------
+                                     34 ; absolute external ram data
+                                     35 ;--------------------------------------------------------
+                                     36 	.area _DABS (ABS)
+                                     37 ;--------------------------------------------------------
+                                     38 ; global & static initialisations
+                                     39 ;--------------------------------------------------------
+                                     40 	.area _HOME
+                                     41 	.area _GSINIT
+                                     42 	.area _GSFINAL
+                                     43 	.area _GSINIT
+                                     44 ;--------------------------------------------------------
+                                     45 ; Home
+                                     46 ;--------------------------------------------------------
+                                     47 	.area _HOME
+                                     48 	.area _HOME
+                                     49 ;--------------------------------------------------------
+                                     50 ; code
+                                     51 ;--------------------------------------------------------
+                                     52 	.area _CODE
+                                     53 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:30: void UpdateCameraPosition(uint8_t dividor){
+                                     54 ;	---------------------------------
+                                     55 ; Function UpdateCameraPosition
+                                     56 ; ---------------------------------
+      000000                         57 _UpdateCameraPosition::
+                                     58 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:31: }
+      000000 C9               [16]   59 	ret
+                                     60 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:32: void SetupVRAM(){
+                                     61 ;	---------------------------------
+                                     62 ; Function SetupVRAM
+                                     63 ; ---------------------------------
+      000001                         64 _SetupVRAM::
+                                     65 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:33: }
+      000001 C9               [16]   66 	ret
+                                     67 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:35: void StartGameplay(){
+                                     68 ;	---------------------------------
+                                     69 ; Function StartGameplay
+                                     70 ; ---------------------------------
+      000002                         71 _StartGameplay::
+                                     72 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:36: }
+      000002 C9               [16]   73 	ret
+                                     74 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:39: uint8_t CheckBackgroundTileIsWalkable(int8_t nextColumn, int8_t nextRow){
+                                     75 ;	---------------------------------
+                                     76 ; Function CheckBackgroundTileIsWalkable
+                                     77 ; ---------------------------------
+      000003                         78 _CheckBackgroundTileIsWalkable::
+                                     79 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:40: return 0;
+      000003 AF               [ 4]   80 	xor	a, a
+                                     81 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:41: }
+      000004 C9               [16]   82 	ret
+                                     83 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:44: void SetupGameplay(){
+                                     84 ;	---------------------------------
+                                     85 ; Function SetupGameplay
+                                     86 ; ---------------------------------
+      000005                         87 _SetupGameplay::
+                                     88 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:46: }
+      000005 C9               [16]   89 	ret
+                                     90 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:48: void UpdateGlobalFrameCounters(){
+                                     91 ;	---------------------------------
+                                     92 ; Function UpdateGlobalFrameCounters
+                                     93 ; ---------------------------------
+      000006                         94 _UpdateGlobalFrameCounters::
+                                     95 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:49: }
+      000006 C9               [16]   96 	ret
+                                     97 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:51: void BlinkLevelBlueAndWhite_Halting(){
+                                     98 ;	---------------------------------
+                                     99 ; Function BlinkLevelBlueAndWhite_Halting
+                                    100 ; ---------------------------------
+      000007                        101 _BlinkLevelBlueAndWhite_Halting::
+                                    102 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:52: }
+      000007 C9               [16]  103 	ret
+                                    104 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:54: void main(){
+                                    105 ;	---------------------------------
+                                    106 ; Function main
+                                    107 ; ---------------------------------
+      000008                        108 _main::
+                                    109 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:55: }
+      000008 C9               [16]  110 	ret
+                                    111 	.area _CODE
+                                    112 	.area _INITIALIZER
+                                    113 	.area _CABS (ABS)

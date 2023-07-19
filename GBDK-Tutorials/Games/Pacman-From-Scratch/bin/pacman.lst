@@ -1,0 +1,76 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.2 #13350 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module pacman
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _SetupPacman
+                                     12 	.globl _UpdatePacman
+                                     13 	.globl _DrawPacman
+                                     14 	.globl _PacmanDeathAnimation_Halting
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 ;--------------------------------------------------------
+                                     19 ; ram data
+                                     20 ;--------------------------------------------------------
+                                     21 	.area _DATA
+                                     22 ;--------------------------------------------------------
+                                     23 ; ram data
+                                     24 ;--------------------------------------------------------
+                                     25 	.area _INITIALIZED
+                                     26 ;--------------------------------------------------------
+                                     27 ; absolute external ram data
+                                     28 ;--------------------------------------------------------
+                                     29 	.area _DABS (ABS)
+                                     30 ;--------------------------------------------------------
+                                     31 ; global & static initialisations
+                                     32 ;--------------------------------------------------------
+                                     33 	.area _HOME
+                                     34 	.area _GSINIT
+                                     35 	.area _GSFINAL
+                                     36 	.area _GSINIT
+                                     37 ;--------------------------------------------------------
+                                     38 ; Home
+                                     39 ;--------------------------------------------------------
+                                     40 	.area _HOME
+                                     41 	.area _HOME
+                                     42 ;--------------------------------------------------------
+                                     43 ; code
+                                     44 ;--------------------------------------------------------
+                                     45 	.area _CODE
+                                     46 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:17: void SetupPacman(){
+                                     47 ;	---------------------------------
+                                     48 ; Function SetupPacman
+                                     49 ; ---------------------------------
+      000000                         50 _SetupPacman::
+                                     51 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:18: }
+      000000 C9               [16]   52 	ret
+                                     53 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:21: void UpdatePacman(){
+                                     54 ;	---------------------------------
+                                     55 ; Function UpdatePacman
+                                     56 ; ---------------------------------
+      000001                         57 _UpdatePacman::
+                                     58 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:23: }
+      000001 C9               [16]   59 	ret
+                                     60 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:25: void DrawPacman(){
+                                     61 ;	---------------------------------
+                                     62 ; Function DrawPacman
+                                     63 ; ---------------------------------
+      000002                         64 _DrawPacman::
+                                     65 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:26: }
+      000002 C9               [16]   66 	ret
+                                     67 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:29: void PacmanDeathAnimation_Halting(){
+                                     68 ;	---------------------------------
+                                     69 ; Function PacmanDeathAnimation_Halting
+                                     70 ; ---------------------------------
+      000003                         71 _PacmanDeathAnimation_Halting::
+                                     72 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\pacman.c:30: }
+      000003 C9               [16]   73 	ret
+                                     74 	.area _CODE
+                                     75 	.area _INITIALIZER
+                                     76 	.area _CABS (ABS)

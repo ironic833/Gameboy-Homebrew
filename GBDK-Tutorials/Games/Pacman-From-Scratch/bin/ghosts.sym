@@ -1,0 +1,45 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  0 _DirectionalPriorities                                         000021 GR
+  0 _DrawGhost                                                     000028 GR
+  0 _GetGhostNextDirection                                         000000 GR
+  0 _GetGhostTargetTile                                            000025 GR
+  0 _GhostsScatterTargets                                          000011 GR
+  0 _GhostsStartPositions                                          000001 GR
+  0 _SetupGhosts                                                   000026 GR
+  0 _UpdateAllGhosts                                               00002A GR
+  0 _UpdateScatterOrChaseMode                                      000029 GR
+  0 _UpdateSingleGhost                                             000027 GR
+  7 __xinit__ghostsReady                                           000000 R
+  7 __xinit__ghostsResetting                                       000001 R
+  7 __xinit__scatterOrChaseMode                                    000002 R
+  1 _frightenedTimer                                               000002 GR
+  1 _frigtenedOffset                                               000005 GR
+  1 _frigtenedTwoFrameAnimator                                     000004 GR
+  2 _ghostsReady                                                   000000 GR
+  2 _ghostsResetting                                               000001 GR
+  1 _scatterChaseCounter                                           000000 GR
+  2 _scatterOrChaseMode                                            000002 GR
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size     2B   flags    0
+   1 _DATA                                      size      6   flags    0
+   2 _INITIALIZED                               size      3   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size      3   flags    0
+   8 _CABS                                      size      0   flags    8
+

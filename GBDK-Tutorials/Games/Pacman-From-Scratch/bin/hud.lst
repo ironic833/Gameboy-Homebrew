@@ -1,0 +1,86 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.2 #13350 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module hud
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _UpdateScore
+                                     12 	.globl _SetupHUD
+                                     13 	.globl _UpdateHUD
+                                     14 	.globl _ShowOrHideOneUpText
+                                     15 	.globl _DrawNumber
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 ;--------------------------------------------------------
+                                     20 ; ram data
+                                     21 ;--------------------------------------------------------
+                                     22 	.area _DATA
+                                     23 ;--------------------------------------------------------
+                                     24 ; ram data
+                                     25 ;--------------------------------------------------------
+                                     26 	.area _INITIALIZED
+                                     27 ;--------------------------------------------------------
+                                     28 ; absolute external ram data
+                                     29 ;--------------------------------------------------------
+                                     30 	.area _DABS (ABS)
+                                     31 ;--------------------------------------------------------
+                                     32 ; global & static initialisations
+                                     33 ;--------------------------------------------------------
+                                     34 	.area _HOME
+                                     35 	.area _GSINIT
+                                     36 	.area _GSFINAL
+                                     37 	.area _GSINIT
+                                     38 ;--------------------------------------------------------
+                                     39 ; Home
+                                     40 ;--------------------------------------------------------
+                                     41 	.area _HOME
+                                     42 	.area _HOME
+                                     43 ;--------------------------------------------------------
+                                     44 ; code
+                                     45 ;--------------------------------------------------------
+                                     46 	.area _CODE
+                                     47 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:16: void UpdateScore(){
+                                     48 ;	---------------------------------
+                                     49 ; Function UpdateScore
+                                     50 ; ---------------------------------
+      000000                         51 _UpdateScore::
+                                     52 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:17: }
+      000000 C9               [16]   53 	ret
+                                     54 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:19: void SetupHUD(){
+                                     55 ;	---------------------------------
+                                     56 ; Function SetupHUD
+                                     57 ; ---------------------------------
+      000001                         58 _SetupHUD::
+                                     59 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:20: }
+      000001 C9               [16]   60 	ret
+                                     61 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:22: void UpdateHUD(){
+                                     62 ;	---------------------------------
+                                     63 ; Function UpdateHUD
+                                     64 ; ---------------------------------
+      000002                         65 _UpdateHUD::
+                                     66 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:23: }
+      000002 C9               [16]   67 	ret
+                                     68 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:25: void ShowOrHideOneUpText(uint8_t show){
+                                     69 ;	---------------------------------
+                                     70 ; Function ShowOrHideOneUpText
+                                     71 ; ---------------------------------
+      000003                         72 _ShowOrHideOneUpText::
+                                     73 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:26: }
+      000003 C9               [16]   74 	ret
+                                     75 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:28: void DrawNumber(uint8_t x,uint8_t y, uint16_t number,uint8_t digits,uint8_t palette){
+                                     76 ;	---------------------------------
+                                     77 ; Function DrawNumber
+                                     78 ; ---------------------------------
+      000004                         79 _DrawNumber::
+                                     80 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\hud.c:29: }
+      000004 E1               [12]   81 	pop	hl
+      000005 E8 04            [16]   82 	add	sp, #4
+      000007 E9               [ 4]   83 	jp	(hl)
+                                     84 	.area _CODE
+                                     85 	.area _INITIALIZER
+                                     86 	.area _CABS (ABS)

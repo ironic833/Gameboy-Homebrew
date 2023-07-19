@@ -1,0 +1,42 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  0 _PacmanEatenLeft_metasprite0                                   0001E8 GR
+  0 _PacmanEatenLeft_metasprite1                                   0001F4 GR
+  0 _PacmanEatenLeft_metasprite2                                   000200 GR
+  0 _PacmanEatenLeft_metasprite3                                   00020C GR
+  0 _PacmanEatenLeft_metasprite4                                   000214 GR
+  0 _PacmanEatenLeft_metasprite5                                   00021C GR
+  0 _PacmanEatenLeft_metasprite6                                   000224 GR
+  0 _PacmanEatenLeft_metasprite7                                   00022C GR
+  0 _PacmanEatenLeft_metasprite8                                   000234 GR
+  0 _PacmanEatenLeft_metasprite9                                   00023C GR
+  0 _PacmanEatenLeft_metasprites                                   000248 GR
+  0 _PacmanEatenLeft_palettes                                      000000 GR
+  0 _PacmanEatenLeft_tiles                                         000028 GR
+    ___bank_PacmanEatenLeft                                     =  000000 G
+  0 ___func_PacmanEatenLeft                                        000000 GR
+    b___func_PacmanEatenLeft                                    =  000000 L
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size    25C   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size      0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size      0   flags    0
+   8 _CABS                                      size      0   flags    8
+

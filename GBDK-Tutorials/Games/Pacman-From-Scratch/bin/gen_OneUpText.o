@@ -1,0 +1,50 @@
+XL3
+H 9 areas 7 global symbols
+M OneUpText
+O -msm83
+S .__.ABS. Def000000
+S ___bank_OneUpText Def000000
+A _CODE size 5E flags 0 addr 0
+S _OneUpText_map Def000058
+S _OneUpText_tiles Def000028
+S _OneUpText_palettes Def000000
+S _OneUpText_map_attributes Def00005B
+S ___func_OneUpText Def000000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 00
+T 00 00 00
+R 00 00 00 00
+T 00 00 00 00 00 00 68 1F 46 1F 03 00 00 31 46
+R 00 00 00 00
+T 0C 00 00 1A 00 FF 7F 00 00 FF 7F 1F 46 1A 00
+R 00 00 00 00
+T 18 00 00 00 68 00 00 00 00 FF 7F 00 68 00 00
+R 00 00 00 00
+T 24 00 00 00 00 1A 00
+R 00 00 00 00
+T 28 00 00
+R 00 00 00 00
+T 28 00 00 31 FF 71 FF 31 FF 31 FF 31 FF 31 FF FC
+R 00 00 00 00
+T 35 00 00 FF 00 FF 8D FF 8D FF 8D FF 8D FF 8D FF
+R 00 00 00 00
+T 42 00 00 8D FF F9 FF 00 FF F8 FF 8C FF 8C FF 8C
+R 00 00 00 00
+T 4F 00 00 FF F8 FF 80 FF 80 FF 00 FF
+R 00 00 00 00
+T 58 00 00
+R 00 00 00 00
+T 58 00 00 00 01 02
+R 00 00 00 00
+T 5B 00 00
+R 00 00 00 00
+T 5B 00 00 03 03 03
+R 00 00 00 00

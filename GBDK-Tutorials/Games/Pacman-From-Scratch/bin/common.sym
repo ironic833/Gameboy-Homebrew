@@ -1,0 +1,48 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  0 _Directions                                                    000000 GR
+  1 _TileSideWalkability                                           000003 GR
+  7 __xinit__dotsRemaining                                         000006 R
+  7 __xinit__enableDebug                                           000008 R
+  7 __xinit__ghosts                                                000009 R
+  7 __xinit__highScore                                             000004 R
+  7 __xinit__score                                                 000002 R
+  7 __xinit__threeFrameAnimator                                    000001 R
+  7 __xinit__twoFrameAnimator                                      000000 R
+  1 _blank                                                         0008EB GR
+  2 _dotsRemaining                                                 000006 GR
+  2 _enableDebug                                                   000008 GR
+  2 _ghosts                                                        000009 GR
+  2 _highScore                                                     000004 GR
+  1 _joypadCurrent                                                 000000 GR
+  1 _joypadPrevious                                                000001 GR
+  1 _level                                                         000002 GR
+  1 _pacman                                                        0008DF GR
+  0 _reverseDirections                                             000010 GR
+  2 _score                                                         000002 GR
+  2 _threeFrameAnimator                                            000001 GR
+  2 _twoFrameAnimator                                              000000 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size     14   flags    0
+   1 _DATA                                      size    8EC   flags    0
+   2 _INITIALIZED                               size     39   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size     39   flags    0
+   8 _CABS                                      size      0   flags    8
+

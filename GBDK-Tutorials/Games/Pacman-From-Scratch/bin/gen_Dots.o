@@ -1,0 +1,46 @@
+XL3
+H 9 areas 7 global symbols
+M Dots
+O -msm83
+S .__.ABS. Def000000
+S ___bank_Dots Def000000
+A _CODE size 46 flags 0 addr 0
+S ___func_Dots Def000000
+S _Dots_map Def000040
+S _Dots_tiles Def000010
+S _Dots_palettes Def000000
+S _Dots_map_attributes Def000043
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 00
+T 00 00 00
+R 00 00 00 00
+T 00 00 00 00 00 00 68 1F 46 1F 03 00 00 00 00
+R 00 00 00 00
+T 0C 00 00 1A 00 FF 7F
+R 00 00 00 00
+T 10 00 00
+R 00 00 00 00
+T 10 00 00 00 00 00 00 00 00 18 18 18 18 00 00 00
+R 00 00 00 00
+T 1D 00 00 00 00 00 00 00 1C 1C 3E 3E 7F 7F 7F 7F
+R 00 00 00 00
+T 2A 00 00 7F 7F 3E 3E 1C 1C 00 00 00 00 00 00 00
+R 00 00 00 00
+T 37 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 00 00
+T 40 00 00
+R 00 00 00 00
+T 40 00 00 00 01 02
+R 00 00 00 00
+T 43 00 00
+R 00 00 00 00
+T 43 00 00 00 00 00
+R 00 00 00 00

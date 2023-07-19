@@ -1,0 +1,153 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.2 #13350 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module ghosts
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _UpdateScatterOrChaseMode
+                                     12 	.globl _scatterOrChaseMode
+                                     13 	.globl _ghostsResetting
+                                     14 	.globl _ghostsReady
+                                     15 	.globl _frigtenedOffset
+                                     16 	.globl _frigtenedTwoFrameAnimator
+                                     17 	.globl _frightenedTimer
+                                     18 	.globl _scatterChaseCounter
+                                     19 	.globl _DirectionalPriorities
+                                     20 	.globl _GhostsScatterTargets
+                                     21 	.globl _GhostsStartPositions
+                                     22 	.globl _GetGhostNextDirection
+                                     23 	.globl _GetGhostTargetTile
+                                     24 	.globl _SetupGhosts
+                                     25 	.globl _UpdateSingleGhost
+                                     26 	.globl _DrawGhost
+                                     27 	.globl _UpdateAllGhosts
+                                     28 ;--------------------------------------------------------
+                                     29 ; special function registers
+                                     30 ;--------------------------------------------------------
+                                     31 ;--------------------------------------------------------
+                                     32 ; ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area _DATA
+      000000                         35 _scatterChaseCounter::
+      000000                         36 	.ds 2
+      000002                         37 _frightenedTimer::
+      000002                         38 	.ds 2
+      000004                         39 _frigtenedTwoFrameAnimator::
+      000004                         40 	.ds 1
+      000005                         41 _frigtenedOffset::
+      000005                         42 	.ds 1
+                                     43 ;--------------------------------------------------------
+                                     44 ; ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area _INITIALIZED
+      000000                         47 _ghostsReady::
+      000000                         48 	.ds 1
+      000001                         49 _ghostsResetting::
+      000001                         50 	.ds 1
+      000002                         51 _scatterOrChaseMode::
+      000002                         52 	.ds 1
+                                     53 ;--------------------------------------------------------
+                                     54 ; absolute external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area _DABS (ABS)
+                                     57 ;--------------------------------------------------------
+                                     58 ; global & static initialisations
+                                     59 ;--------------------------------------------------------
+                                     60 	.area _HOME
+                                     61 	.area _GSINIT
+                                     62 	.area _GSFINAL
+                                     63 	.area _GSINIT
+                                     64 ;--------------------------------------------------------
+                                     65 ; Home
+                                     66 ;--------------------------------------------------------
+                                     67 	.area _HOME
+                                     68 	.area _HOME
+                                     69 ;--------------------------------------------------------
+                                     70 ; code
+                                     71 ;--------------------------------------------------------
+                                     72 	.area _CODE
+                                     73 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:32: void GetGhostNextDirection(uint8_t ghostIndex){
+                                     74 ;	---------------------------------
+                                     75 ; Function GetGhostNextDirection
+                                     76 ; ---------------------------------
+      000000                         77 _GetGhostNextDirection::
+                                     78 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:34: }
+      000000 C9               [16]   79 	ret
+      000001                         80 _GhostsStartPositions:
+      000001 09 00                   81 	.dw #0x0009
+      000003 0C 00                   82 	.dw #0x000c
+      000005 0A 00                   83 	.dw #0x000a
+      000007 0A 00                   84 	.dw #0x000a
+      000009 0A 00                   85 	.dw #0x000a
+      00000B 0C 00                   86 	.dw #0x000c
+      00000D 0B 00                   87 	.dw #0x000b
+      00000F 0C 00                   88 	.dw #0x000c
+      000011                         89 _GhostsScatterTargets:
+      000011 14 00                   90 	.dw #0x0014
+      000013 1B 00                   91 	.dw #0x001b
+      000015 12 00                   92 	.dw #0x0012
+      000017 FC FF                   93 	.dw #0xfffc
+      000019 02 00                   94 	.dw #0x0002
+      00001B FC FF                   95 	.dw #0xfffc
+      00001D 00 00                   96 	.dw #0x0000
+      00001F 1B 00                   97 	.dw #0x001b
+      000021                         98 _DirectionalPriorities:
+      000021 03                      99 	.db #0x03	; 3
+      000022 00                     100 	.db #0x00	; 0
+      000023 01                     101 	.db #0x01	; 1
+      000024 02                     102 	.db #0x02	; 2
+                                    103 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:36: void GetGhostTargetTile(uint8_t ghostIndex){
+                                    104 ;	---------------------------------
+                                    105 ; Function GetGhostTargetTile
+                                    106 ; ---------------------------------
+      000025                        107 _GetGhostTargetTile::
+                                    108 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:37: }
+      000025 C9               [16]  109 	ret
+                                    110 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:39: void SetupGhosts(){
+                                    111 ;	---------------------------------
+                                    112 ; Function SetupGhosts
+                                    113 ; ---------------------------------
+      000026                        114 _SetupGhosts::
+                                    115 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:40: }
+      000026 C9               [16]  116 	ret
+                                    117 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:42: void UpdateSingleGhost(uint8_t i){
+                                    118 ;	---------------------------------
+                                    119 ; Function UpdateSingleGhost
+                                    120 ; ---------------------------------
+      000027                        121 _UpdateSingleGhost::
+                                    122 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:43: }
+      000027 C9               [16]  123 	ret
+                                    124 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:44: void DrawGhost(uint8_t i){
+                                    125 ;	---------------------------------
+                                    126 ; Function DrawGhost
+                                    127 ; ---------------------------------
+      000028                        128 _DrawGhost::
+                                    129 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:45: }
+      000028 C9               [16]  130 	ret
+                                    131 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:48: void UpdateScatterOrChaseMode(){
+                                    132 ;	---------------------------------
+                                    133 ; Function UpdateScatterOrChaseMode
+                                    134 ; ---------------------------------
+      000029                        135 _UpdateScatterOrChaseMode::
+                                    136 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:49: }
+      000029 C9               [16]  137 	ret
+                                    138 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:51: void UpdateAllGhosts(){
+                                    139 ;	---------------------------------
+                                    140 ; Function UpdateAllGhosts
+                                    141 ; ---------------------------------
+      00002A                        142 _UpdateAllGhosts::
+                                    143 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\ghosts.c:52: }
+      00002A C9               [16]  144 	ret
+                                    145 	.area _CODE
+                                    146 	.area _INITIALIZER
+      000000                        147 __xinit__ghostsReady:
+      000000 00                     148 	.db #0x00	; 0
+      000001                        149 __xinit__ghostsResetting:
+      000001 00                     150 	.db #0x00	; 0
+      000002                        151 __xinit__scatterOrChaseMode:
+      000002 00                     152 	.db #0x00	; 0
+                                    153 	.area _CABS (ABS)

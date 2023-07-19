@@ -1,0 +1,59 @@
+XL3
+H 9 areas A global symbols
+M main
+O -msm83
+S .__.ABS. Def000000
+A _CODE size 9 flags 0 addr 0
+S _main Def000008
+S _BlinkLevelBlueAndWhite_Halting Def000007
+S _UpdateGlobalFrameCounters Def000006
+S _StartGameplay Def000002
+S _UpdateCameraPosition Def000000
+S _SetupGameplay Def000005
+S _SetupVRAM Def000001
+S _CheckBackgroundTileIsWalkable Def000003
+A _DATA size 1 flags 0 addr 0
+S _counter Def000000
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 01 00
+T 00 00 00
+R 00 00 01 00
+T 00 00 00
+R 00 00 00 00
+T 00 00 00 C9
+R 00 00 00 00
+T 01 00 00
+R 00 00 00 00
+T 01 00 00 C9
+R 00 00 00 00
+T 02 00 00
+R 00 00 00 00
+T 02 00 00 C9
+R 00 00 00 00
+T 03 00 00
+R 00 00 00 00
+T 03 00 00 AF C9
+R 00 00 00 00
+T 05 00 00
+R 00 00 00 00
+T 05 00 00 C9
+R 00 00 00 00
+T 06 00 00
+R 00 00 00 00
+T 06 00 00 C9
+R 00 00 00 00
+T 07 00 00
+R 00 00 00 00
+T 07 00 00 C9
+R 00 00 00 00
+T 08 00 00
+R 00 00 00 00
+T 08 00 00 C9
+R 00 00 00 00

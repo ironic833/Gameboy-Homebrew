@@ -1,0 +1,75 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ISO C Compiler 
+                                      3 ; Version 4.2.2 #13350 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module dots
+                                      6 	.optsdcc -msm83
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _dotsShown
+                                     12 	.globl _BigPelletPositions
+                                     13 	.globl _SetupDots
+                                     14 	.globl _HandleDotConsumption
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 ;--------------------------------------------------------
+                                     19 ; ram data
+                                     20 ;--------------------------------------------------------
+                                     21 	.area _DATA
+                                     22 ;--------------------------------------------------------
+                                     23 ; ram data
+                                     24 ;--------------------------------------------------------
+                                     25 	.area _INITIALIZED
+      000000                         26 _dotsShown::
+      000000                         27 	.ds 1
+                                     28 ;--------------------------------------------------------
+                                     29 ; absolute external ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area _DABS (ABS)
+                                     32 ;--------------------------------------------------------
+                                     33 ; global & static initialisations
+                                     34 ;--------------------------------------------------------
+                                     35 	.area _HOME
+                                     36 	.area _GSINIT
+                                     37 	.area _GSFINAL
+                                     38 	.area _GSINIT
+                                     39 ;--------------------------------------------------------
+                                     40 ; Home
+                                     41 ;--------------------------------------------------------
+                                     42 	.area _HOME
+                                     43 	.area _HOME
+                                     44 ;--------------------------------------------------------
+                                     45 ; code
+                                     46 ;--------------------------------------------------------
+                                     47 	.area _CODE
+                                     48 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\dots.c:25: void SetupDots(){
+                                     49 ;	---------------------------------
+                                     50 ; Function SetupDots
+                                     51 ; ---------------------------------
+      000000                         52 _SetupDots::
+                                     53 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\dots.c:26: }
+      000000 C9               [16]   54 	ret
+      000001                         55 _BigPelletPositions:
+      000001 01 00                   56 	.dw #0x0001
+      000003 03 00                   57 	.dw #0x0003
+      000005 13 00                   58 	.dw #0x0013
+      000007 03 00                   59 	.dw #0x0003
+      000009 01 00                   60 	.dw #0x0001
+      00000B 14 00                   61 	.dw #0x0014
+      00000D 13 00                   62 	.dw #0x0013
+      00000F 14 00                   63 	.dw #0x0014
+                                     64 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\dots.c:29: void HandleDotConsumption(){
+                                     65 ;	---------------------------------
+                                     66 ; Function HandleDotConsumption
+                                     67 ; ---------------------------------
+      000011                         68 _HandleDotConsumption::
+                                     69 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\Gameplay\dots.c:30: }
+      000011 C9               [16]   70 	ret
+                                     71 	.area _CODE
+                                     72 	.area _INITIALIZER
+      000000                         73 __xinit__dotsShown:
+      000000 00                      74 	.db #0x00	; 0
+                                     75 	.area _CABS (ABS)
