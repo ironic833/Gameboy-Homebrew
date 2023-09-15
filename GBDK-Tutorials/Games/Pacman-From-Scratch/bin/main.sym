@@ -7,23 +7,83 @@ Symbol Table
     .__.ABS.                                                    =  000000 G
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000000 L
-  0 _BlinkLevelBlueAndWhite_Halting                                000007 GR
-  0 _CheckBackgroundTileIsWalkable                                 000003 GR
-  0 _SetupGameplay                                                 000005 GR
-  0 _SetupVRAM                                                     000001 GR
-  0 _StartGameplay                                                 000002 GR
+    _BlackSquare_tiles                                             ****** GX
+  0 _BlinkLevelBlueAndWhite_Halting                                00033E GR
+  0 _CheckBackgroundTileIsWalkable                                 000228 GR
+    _Directions                                                    ****** GX
+    _Dots_tiles                                                    ****** GX
+    _DrawGhost                                                     ****** GX
+    _DrawPacman                                                    ****** GX
+    _GhostsEaten_tiles                                             ****** GX
+    _GhostsScared_tiles                                            ****** GX
+    _Ghosts_tiles                                                  ****** GX
+    _HandleDotConsumption                                          ****** GX
+    _HighText_tiles                                                ****** GX
+    _LCDC_REG                                                      ****** GX
+    _Map_map                                                       ****** GX
+    _Map_map_attributes                                            ****** GX
+    _Map_palettes                                                  ****** GX
+    _Map_tiles                                                     ****** GX
+    _NR50_REG                                                      ****** GX
+    _NR51_REG                                                      ****** GX
+    _NR52_REG                                                      ****** GX
+    _Numbers_tiles                                                 ****** GX
+    _OneUpText_tiles                                               ****** GX
+    _PacmanDeathAnimation_Halting                                  ****** GX
+    _Pacman_palettes                                               ****** GX
+    _ReadyText_tiles                                               ****** GX
+    _SCX_REG                                                       ****** GX
+    _SCY_REG                                                       ****** GX
+    _SetupDots                                                     ****** GX
+  0 _SetupGameplay                                                 00022A GR
+    _SetupGhosts                                                   ****** GX
+    _SetupHUD                                                      ****** GX
+    _SetupPacman                                                   ****** GX
+  0 _SetupVRAM                                                     00014A GR
+  0 _StartGameplay                                                 000227 GR
+    _TargetTiles_tiles                                             ****** GX
+    _TileSideWalkability                                           ****** GX
+    _UpdateAllGhosts                                               ****** GX
   0 _UpdateCameraPosition                                          000000 GR
-  0 _UpdateGlobalFrameCounters                                     000006 GR
+  0 _UpdateGlobalFrameCounters                                     00033D GR
+    _UpdateHUD                                                     ****** GX
+    _UpdatePacman                                                  ****** GX
+    _UpdateScore                                                   ****** GX
+    _VBK_REG                                                       ****** GX
+    __divsint                                                      ****** GX
+    __muluschar                                                    ****** GX
+    _blank                                                         ****** GX
   1 _counter                                                       000000 GR
-  0 _main                                                          000008 GR
-
-
+    _dotsRemaining                                                 ****** GX
+    _enableDebug                                                   ****** GX
+    _get_bkg_tile_xy                                               ****** GX
+    _ghostsReady                                                   ****** GX
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    _ghostsResetting                                               ****** GX
+    _joypad                                                        ****** GX
+    _joypadCurrent                                                 ****** GX
+    _joypadPrevious                                                ****** GX
+  0 _main                                                          00033F GR
+    _pacman                                                        ****** GX
+    _score                                                         ****** GX
+    _set_bkg_data                                                  ****** GX
+    _set_bkg_palette                                               ****** GX
+    _set_bkg_tiles                                                 ****** GX
+    _set_sprite_data                                               ****** GX
+    _set_sprite_palette                                            ****** GX
+    _wait_vbl_done                                                 ****** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 3
 Hexadecimal [24-Bits]
 
 Area Table
 
-   0 _CODE                                      size      9   flags    0
+   0 _CODE                                      size    3B2   flags    0
    1 _DATA                                      size      1   flags    0
    2 _INITIALIZED                               size      0   flags    0
    3 _DABS                                      size      0   flags    8

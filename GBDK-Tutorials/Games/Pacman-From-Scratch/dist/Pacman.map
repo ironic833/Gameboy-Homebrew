@@ -30,17 +30,17 @@ Area                       Addr        Size        Decimal Bytes (Attributes)
      00000002  l__HEADER |    00000002  l__HEADER |    00000003  l__HEADER
      00000003  l__HRAM12 |    00000005  l__HEADER |    00000006  l__HEADER
      00000007  l__HEADER |    00000008  l__HEADER |    0000000C  l__GSINIT
-     00000030  l__HEADER |    00000043  l__INITIA |    00000043  l__INITIA
-     0000004C  l__HEADER |    00000084  l__HEADER |    00000092  l__HOME  
-     00000200  s__CODE   |    00000904  l__DATA   |    00001ED9  l__CODE  
-     00002000  _rROMB0   |    000020D9  s__HOME   |    0000216B  s__BASE  
-     0000216B  s__CODE_0 |    0000216B  s__INITIA |    0000216B  s__LIT   
-     000021AE  s__GSINIT |    000021BA  s__GSFINA |    00003000  _rROMB1  
+     00000030  l__HEADER |    00000044  l__INITIA |    00000044  l__INITIA
+     0000004C  l__HEADER |    00000084  l__HEADER |    0000017D  l__HOME  
+     00000200  s__CODE   |    00000904  l__DATA   |    00002000  _rROMB0  
+     00002304  l__CODE   |    00002504  s__HOME   |    00002681  s__BASE  
+     00002681  s__CODE_0 |    00002681  s__INITIA |    00002681  s__LIT   
+     000026C5  s__GSINIT |    000026D1  s__GSFINA |    00003000  _rROMB1  
      00004000  _rRAMB    |    00008000  __VRAM    |    00008000  __VRAM800
      00008800  __VRAM880 |    00009000  __VRAM900 |    00009800  __SCRN0  
      00009C00  __SCRN1   |    0000A000  __SRAM    |    0000C000  __RAM    
      0000C000  _shadow_O |    0000C0A0  s__DATA   |    0000C9A4  s__BSS   
-     0000C9A4  s__INITIA |    0000C9E7  s__HEAP   |    0000C9E7  s__HEAP_E
+     0000C9A4  s__INITIA |    0000C9E8  s__HEAP   |    0000C9E8  s__HEAP_E
      0000D000  __RAMBANK |    0000E000  .STACK    |    0000FE00  __OAMRAM 
      0000FF00  _P1_REG   |    0000FF00  __IO      |    0000FF01  _SB_REG  
      0000FF02  _SC_REG   |    0000FF04  _DIV_REG  |    0000FF05  _TIMA_REG
@@ -77,7 +77,7 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00001ED9 =        7897. bytes (REL,CON)
+_CODE                  00000200    00002304 =        8964. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -91,80 +91,83 @@ _CODE                  00000200    00001ED9 =        7897. bytes (REL,CON)
      00000248  _HandleDo |    00000249  _GetDirec |    0000024A  _CanChara
      0000024C  _TryChang |    0000024D  _MoveForw |    0000024F  _DrawChar
      00000252  _RandomNu |    00000294  _getSquar |    000002CB  _UpdateCa
-     000002CC  _SetupVRA |    000002CD  _StartGam |    000002CE  _CheckBac
-     000002D0  _SetupGam |    000002D1  _UpdateGl |    000002D2  _BlinkLev
-     000002D3  _main     |    000002D4  _Directio |    000002E4  _reverseD
-     000002E8  _TargetTi |    000002E8  ___func_T |    00000310  _TargetTi
-     00000390  _TargetTi |    00000398  _TargetTi |    000003A0  _TargetTi
-     000003A8  _TargetTi |    000003B0  _TargetTi |    000003B8  _ReadyTex
-     000003B8  ___func_R |    000003D0  _ReadyTex |    00000430  _ReadyTex
-     00000436  _ReadyTex |    0000043C  _PacmanEa |    0000043C  ___func_P
-     00000464  _PacmanEa |    00000664  _PacmanEa |    00000670  _PacmanEa
-     0000067C  _PacmanEa |    00000688  _PacmanEa |    00000694  _PacmanEa
-     000006A0  _PacmanEa |    000006AC  _PacmanEa |    000006B8  _PacmanEa
-     000006C4  _PacmanEa |    000006D4  _PacmanEa |    000006D4  ___func_P
-     000006FC  _PacmanEa |    0000085C  _PacmanEa |    00000868  _PacmanEa
-     00000874  _PacmanEa |    0000087C  _PacmanEa |    00000884  _PacmanEa
-     0000088C  _PacmanEa |    00000894  _PacmanEa |    0000089C  _PacmanEa
-     000008A8  _PacmanEa |    000008B8  _PacmanEa |    000008B8  ___func_P
-     000008E0  _PacmanEa |    00000AA0  _PacmanEa |    00000AAC  _PacmanEa
-     00000AB8  _PacmanEa |    00000AC4  _PacmanEa |    00000ACC  _PacmanEa
-     00000AD4  _PacmanEa |    00000ADC  _PacmanEa |    00000AE4  _PacmanEa
-     00000AEC  _PacmanEa |    00000AF4  _PacmanEa |    00000B00  _PacmanEa
-     00000B14  _PacmanEa |    00000B14  ___func_P |    00000B3C  _PacmanEa
-     00000D3C  _PacmanEa |    00000D48  _PacmanEa |    00000D54  _PacmanEa
-     00000D60  _PacmanEa |    00000D6C  _PacmanEa |    00000D78  _PacmanEa
-     00000D84  _PacmanEa |    00000D90  _PacmanEa |    00000D9C  _PacmanEa
-     00000DAC  _Pacman_p |    00000DAC  ___func_P |    00000DDC  _Pacman_t
-     0000109C  _Pacman_m |    000010A8  _Pacman_m |    000010B4  _Pacman_m
-     000010C0  _Pacman_m |    000010CC  _Pacman_m |    000010D8  _Pacman_m
-     000010E4  _Pacman_m |    000010F0  _Pacman_m |    000010FC  _Pacman_m
-     00001108  _Pacman_m |    00001114  _Pacman_m |    00001120  _Pacman_m
-     0000112C  _Pacman_m |    00001144  _OneUpTex |    00001144  ___func_O
-     0000116C  _OneUpTex |    0000119C  _OneUpTex |    0000119F  _OneUpTex
-     000011A2  _Numbers_ |    000011A2  ___func_N |    000011BA  _Numbers_
-     0000125A  _Numbers_ |    00001264  _Numbers_ |    0000126E  _Map_pale
-     0000126E  ___func_M |    00001296  _Map_tile |    000013B6  _Map_map 
-     000015ED  _Map_map_ |    00001824  _HighText |    00001824  ___func_H
-     0000184C  _HighText |    0000187C  _HighText |    00001880  _HighText
-     00001884  _GhostsSc |    00001884  ___func_G |    000018AC  _GhostsSc
-     000019AC  _GhostsSc |    000019B8  _GhostsSc |    000019C4  _GhostsSc
-     000019D0  _GhostsSc |    000019DC  _GhostsSc |    000019E4  _GhostsEa
-     000019E4  ___func_G |    00001A0C  _GhostsEa |    00001B0C  _GhostsEa
+     00000415  _SetupVRA |    000004F2  _StartGam |    000004F3  _CheckBac
+     000004F5  _SetupGam |    00000608  _UpdateGl |    00000609  _BlinkLev
+     0000060A  _main     |    0000067D  _Directio |    0000068D  _reverseD
+     00000691  _TargetTi |    00000691  ___func_T |    000006B9  _TargetTi
+     00000739  _TargetTi |    00000741  _TargetTi |    00000749  _TargetTi
+     00000751  _TargetTi |    00000759  _TargetTi |    00000761  _ReadyTex
+     00000761  ___func_R |    00000779  _ReadyTex |    000007D9  _ReadyTex
+     000007DF  _ReadyTex |    000007E5  _PacmanEa |    000007E5  ___func_P
+     0000080D  _PacmanEa |    00000A0D  _PacmanEa |    00000A19  _PacmanEa
+     00000A25  _PacmanEa |    00000A31  _PacmanEa |    00000A3D  _PacmanEa
+     00000A49  _PacmanEa |    00000A55  _PacmanEa |    00000A61  _PacmanEa
+     00000A6D  _PacmanEa |    00000A7D  _PacmanEa |    00000A7D  ___func_P
+     00000AA5  _PacmanEa |    00000C05  _PacmanEa |    00000C11  _PacmanEa
+     00000C1D  _PacmanEa |    00000C25  _PacmanEa |    00000C2D  _PacmanEa
+     00000C35  _PacmanEa |    00000C3D  _PacmanEa |    00000C45  _PacmanEa
+     00000C51  _PacmanEa |    00000C61  _PacmanEa |    00000C61  ___func_P
+     00000C89  _PacmanEa |    00000E49  _PacmanEa |    00000E55  _PacmanEa
+     00000E61  _PacmanEa |    00000E6D  _PacmanEa |    00000E75  _PacmanEa
+     00000E7D  _PacmanEa |    00000E85  _PacmanEa |    00000E8D  _PacmanEa
+     00000E95  _PacmanEa |    00000E9D  _PacmanEa |    00000EA9  _PacmanEa
+     00000EBD  _PacmanEa |    00000EBD  ___func_P |    00000EE5  _PacmanEa
+     000010E5  _PacmanEa |    000010F1  _PacmanEa |    000010FD  _PacmanEa
+     00001109  _PacmanEa |    00001115  _PacmanEa |    00001121  _PacmanEa
+     0000112D  _PacmanEa |    00001139  _PacmanEa |    00001145  _PacmanEa
+     00001155  _Pacman_p |    00001155  ___func_P |    00001185  _Pacman_t
+     00001445  _Pacman_m |    00001451  _Pacman_m |    0000145D  _Pacman_m
+     00001469  _Pacman_m |    00001475  _Pacman_m |    00001481  _Pacman_m
+     0000148D  _Pacman_m |    00001499  _Pacman_m |    000014A5  _Pacman_m
+     000014B1  _Pacman_m |    000014BD  _Pacman_m |    000014C9  _Pacman_m
+     000014D5  _Pacman_m |    000014ED  _OneUpTex |    000014ED  ___func_O
+     00001515  _OneUpTex |    00001545  _OneUpTex |    00001548  _OneUpTex
+     0000154B  _Numbers_ |    0000154B  ___func_N |    00001563  _Numbers_
+     00001603  _Numbers_ |    0000160D  _Numbers_ |    00001617  _Map_pale
+     00001617  ___func_M |    0000163F  _Map_tile |    0000175F  _Map_map 
+     00001996  _Map_map_ |    00001BCD  _HighText |    00001BCD  ___func_H
+     00001BF5  _HighText |    00001C25  _HighText |    00001C29  _HighText
+     00001C2D  _GhostsSc |    00001C2D  ___func_G |    00001C55  _GhostsSc
+     00001D55  _GhostsSc |    00001D61  _GhostsSc |    00001D6D  _GhostsSc
+     00001D79  _GhostsSc |    00001D85  _GhostsSc |    00001D8D  _GhostsEa
+     00001D8D  ___func_G |    00001DB5  _GhostsEa |    00001EB5  _GhostsEa
 ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_CODE                  00000200    00001ED9 =        7897. bytes (REL,CON)
+_CODE                  00000200    00002304 =        8964. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     00001B18  _GhostsEa |    00001B24  _GhostsEa |    00001B30  _GhostsEa
-     00001B3C  _GhostsEa |    00001B44  _Ghosts_p |    00001B44  ___func_G
-     00001B6C  _Ghosts_t |    00001D6C  _Ghosts_m |    00001D78  _Ghosts_m
-     00001D84  _Ghosts_m |    00001D90  _Ghosts_m |    00001D9C  _Ghosts_m
-     00001DA8  _Ghosts_m |    00001DB4  _Ghosts_m |    00001DC0  _Ghosts_m
-     00001DCC  _Ghosts_m |    00001DD8  _Ghosts_m |    00001DE4  _Ghosts_m
-     00001DF0  _Ghosts_m |    00001DFC  _Ghosts_m |    00001E08  _Ghosts_m
-     00001E14  _Ghosts_m |    00001E20  _Ghosts_m |    00001E2C  _Ghosts_m
-     00001E38  _Ghosts_m |    00001E44  _Ghosts_m |    00001E50  _Ghosts_m
-     00001E5C  _Ghosts_m |    00001E68  _Ghosts_m |    00001E74  _Ghosts_m
-     00001E80  _Ghosts_m |    00001E8C  _Ghosts_m |    00001E98  _Ghosts_m
-     00001EA4  _Ghosts_m |    00001EB0  _Ghosts_m |    00001EBC  _Ghosts_m
-     00001EC8  _Ghosts_m |    00001ED4  _Ghosts_m |    00001EE0  _Ghosts_m
-     00001EEC  _Ghosts_m |    00001F2C  _Dots_pal |    00001F2C  ___func_D
-     00001F3C  _Dots_til |    00001F6C  _Dots_map |    00001F6F  _Dots_map
-     00001F72  _BlackSqu |    00001F72  ___func_B |    00001F9A  _BlackSqu
-     00001FAA  _BlackSqu |    00001FAB  _BlackSqu |    00001FAC  __mulsuch
-     00001FAF  __mulusch |    00001FB8  __mulscha |    00001FC0  __mulint 
-     00001FDF  __mulucha |    00001FF1  __divsuch |    00001FF7  __modsuch
-     00002000  __divusch |    00002009  __modusch |    00002016  __divscha
-     0000201B  __modscha |    00002022  __divsint |    0000202B  __modsint
-     00002037  __divucha |    0000203C  __moducha |    00002043  __divuint
-     0000204C  __moduint |    00002058  .div8     |    00002058  .mod8    
-     00002060  .div16    |    00002060  .mod16    |    00002096  .divu8   
-     00002096  .modu8    |    00002099  .divu16   |    00002099  .modu16  
+     00001EC1  _GhostsEa |    00001ECD  _GhostsEa |    00001ED9  _GhostsEa
+     00001EE5  _GhostsEa |    00001EED  _Ghosts_p |    00001EED  ___func_G
+     00001F15  _Ghosts_t |    00002115  _Ghosts_m |    00002121  _Ghosts_m
+     0000212D  _Ghosts_m |    00002139  _Ghosts_m |    00002145  _Ghosts_m
+     00002151  _Ghosts_m |    0000215D  _Ghosts_m |    00002169  _Ghosts_m
+     00002175  _Ghosts_m |    00002181  _Ghosts_m |    0000218D  _Ghosts_m
+     00002199  _Ghosts_m |    000021A5  _Ghosts_m |    000021B1  _Ghosts_m
+     000021BD  _Ghosts_m |    000021C9  _Ghosts_m |    000021D5  _Ghosts_m
+     000021E1  _Ghosts_m |    000021ED  _Ghosts_m |    000021F9  _Ghosts_m
+     00002205  _Ghosts_m |    00002211  _Ghosts_m |    0000221D  _Ghosts_m
+     00002229  _Ghosts_m |    00002235  _Ghosts_m |    00002241  _Ghosts_m
+     0000224D  _Ghosts_m |    00002259  _Ghosts_m |    00002265  _Ghosts_m
+     00002271  _Ghosts_m |    0000227D  _Ghosts_m |    00002289  _Ghosts_m
+     00002295  _Ghosts_m |    000022D5  _Dots_pal |    000022D5  ___func_D
+     000022E5  _Dots_til |    00002315  _Dots_map |    00002318  _Dots_map
+     0000231B  _BlackSqu |    0000231B  ___func_B |    00002343  _BlackSqu
+     00002353  _BlackSqu |    00002354  _BlackSqu |    00002355  _set_spri
+     0000235A  _set_bkg_ |    0000235D  .set_pale |    0000237C  _set_spri
+     00002381  _set_bkg_ |    00002384  .set_pale |    000023A0  _get_vram
+     000023A8  _get_win_ |    000023B0  _get_bkg_ |    000023D7  __mulsuch
+     000023DA  __mulusch |    000023E3  __mulscha |    000023EB  __mulint 
+     0000240A  __mulucha |    0000241C  __divsuch |    00002422  __modsuch
+     0000242B  __divusch |    00002434  __modusch |    00002441  __divscha
+     00002446  __modscha |    0000244D  __divsint |    00002456  __modsint
+     00002462  __divucha |    00002467  __moducha |    0000246E  __divuint
+     00002477  __moduint |    00002483  .div8     |    00002483  .mod8    
+     0000248B  .div16    |    0000248B  .mod16    |    000024C1  .divu8   
+     000024C1  .modu8    |    000024C4  .divu16   |    000024C4  .modu16  
 ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
 Hexadecimal  [32-Bits]
 
@@ -339,20 +342,25 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_HOME                  000020D9    00000092 =         146. bytes (REL,CON)
+_HOME                  00002504    0000017D =         381. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     000020D9  .memset_s |    000020E2  .memcpy_s |    000020FF  .remove_V
-     00002102  .remove_i |    0000211F  .add_VBL  |    00002122  .add_int 
-     0000212D  .wait_vbl |    0000212D  _wait_vbl |    0000213D  .display_
-     0000213D  _display_ |    00002155  _remove_V |    00002160  _add_VBL 
+     00002504  .memset_s |    0000250D  .memcpy_s |    0000252A  .remove_V
+     0000252D  .remove_i |    0000254A  .add_VBL  |    0000254D  .add_int 
+     00002558  .wait_vbl |    00002558  _wait_vbl |    00002568  .display_
+     00002568  _display_ |    00002580  _remove_V |    0000258B  _add_VBL 
+     00002596  _set_tile |    0000259B  _set_bkg_ |    0000259B  _set_win_
+     000025A3  _set_spri |    000025D3  .padup    |    000025D3  _waitpadu
+     000025E3  .jpad     |    000025E3  _joypad   |    0000260B  _waitpad 
+     0000260C  .wait_pad |    00002613  _set_bkg_ |    00002627  .set_xy_w
+     00002630  .set_xy_b |    0000263F  .set_xy_t
 ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_INITIALIZER           0000216B    00000043 =          67. bytes (REL,CON)
+_INITIALIZER           00002681    00000044 =          68. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -361,17 +369,17 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSINIT                000021AE    0000000C =          12. bytes (REL,CON)
+_GSINIT                000026C5    0000000C =          12. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
-     000021AE  gsinit   
+     000026C5  gsinit   
 ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
 Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_GSFINAL               000021BA    00000001 =           1. bytes (REL,CON)
+_GSFINAL               000026D1    00000001 =           1. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -395,7 +403,7 @@ Hexadecimal  [32-Bits]
 
 Area                       Addr        Size        Decimal Bytes (Attributes)
 --------------------       ----        ----        ------- ----- ------------
-_INITIALIZED           0000C9A4    00000043 =          67. bytes (REL,CON)
+_INITIALIZED           0000C9A4    00000044 =          68. bytes (REL,CON)
 
         Value  Global            Value  Global            Value  Global    
         -----  ------            -----  ------            -----  ------    
@@ -403,7 +411,7 @@ _INITIALIZED           0000C9A4    00000043 =          67. bytes (REL,CON)
      0000C9A7  _dotsShow |    0000C9A8  _directio |    0000C9AC  _numberOf
      0000C9AD  _lastValu |    0000C9AE  _twoFrame |    0000C9AF  _threeFra
      0000C9B0  _score    |    0000C9B2  _highScor |    0000C9B4  _dotsRema
-     0000C9B6  _enableDe |    0000C9B7  _ghosts  
+     0000C9B6  _enableDe |    0000C9B7  _ghosts   |    0000C9E7  __map_til
 ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
 Hexadecimal  [32-Bits]
 
@@ -448,12 +456,24 @@ bin/gen_BlackSquare.o                     [ BlackSquare ]
 
 Libraries Linked                          [ object file ]
 
+D:\Enviromental-Variables\gbdk\lib/gb/gb.lib
+                                          [ sfr.o ]
+D:\Enviromental-Variables\gbdk\lib/gb/gb.lib
+                                          [ cgb_palettes.o ]
+D:\Enviromental-Variables\gbdk\lib/gb/gb.lib
+                                          [ get_tile.o ]
 D:\Enviromental-Variables\gbdk\lib/sm83/sm83.lib
                                           [ mul.o ]
+D:\Enviromental-Variables\gbdk\lib/gb/gb.lib
+                                          [ set_data.o ]
+D:\Enviromental-Variables\gbdk\lib/gb/gb.lib
+                                          [ pad.o ]
 D:\Enviromental-Variables\gbdk\lib/sm83/sm83.lib
                                           [ div.o ]
 D:\Enviromental-Variables\gbdk\lib/gb/gb.lib
-                                          [ sfr.o ]
+                                          [ set_bk_t.o ]
+D:\Enviromental-Variables\gbdk\lib/gb/gb.lib
+                                          [ set_xy_t.o ]
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
 

@@ -16,98 +16,810 @@
                                      16 	.globl _StartGameplay
                                      17 	.globl _SetupVRAM
                                      18 	.globl _UpdateCameraPosition
-                                     19 	.globl _counter
-                                     20 ;--------------------------------------------------------
-                                     21 ; special function registers
-                                     22 ;--------------------------------------------------------
-                                     23 ;--------------------------------------------------------
-                                     24 ; ram data
-                                     25 ;--------------------------------------------------------
-                                     26 	.area _DATA
-      000000                         27 _counter::
-      000000                         28 	.ds 1
-                                     29 ;--------------------------------------------------------
-                                     30 ; ram data
-                                     31 ;--------------------------------------------------------
-                                     32 	.area _INITIALIZED
-                                     33 ;--------------------------------------------------------
-                                     34 ; absolute external ram data
-                                     35 ;--------------------------------------------------------
-                                     36 	.area _DABS (ABS)
-                                     37 ;--------------------------------------------------------
-                                     38 ; global & static initialisations
-                                     39 ;--------------------------------------------------------
-                                     40 	.area _HOME
-                                     41 	.area _GSINIT
-                                     42 	.area _GSFINAL
-                                     43 	.area _GSINIT
-                                     44 ;--------------------------------------------------------
-                                     45 ; Home
-                                     46 ;--------------------------------------------------------
-                                     47 	.area _HOME
-                                     48 	.area _HOME
+                                     19 	.globl _set_sprite_palette
+                                     20 	.globl _set_bkg_palette
+                                     21 	.globl _SetupDots
+                                     22 	.globl _HandleDotConsumption
+                                     23 	.globl _PacmanDeathAnimation_Halting
+                                     24 	.globl _UpdatePacman
+                                     25 	.globl _SetupPacman
+                                     26 	.globl _DrawPacman
+                                     27 	.globl _UpdateAllGhosts
+                                     28 	.globl _DrawGhost
+                                     29 	.globl _SetupGhosts
+                                     30 	.globl _UpdateScore
+                                     31 	.globl _UpdateHUD
+                                     32 	.globl _SetupHUD
+                                     33 	.globl _set_sprite_data
+                                     34 	.globl _get_bkg_tile_xy
+                                     35 	.globl _set_bkg_tiles
+                                     36 	.globl _set_bkg_data
+                                     37 	.globl _wait_vbl_done
+                                     38 	.globl _joypad
+                                     39 	.globl _counter
+                                     40 ;--------------------------------------------------------
+                                     41 ; special function registers
+                                     42 ;--------------------------------------------------------
+                                     43 ;--------------------------------------------------------
+                                     44 ; ram data
+                                     45 ;--------------------------------------------------------
+                                     46 	.area _DATA
+      000000                         47 _counter::
+      000000                         48 	.ds 1
                                      49 ;--------------------------------------------------------
-                                     50 ; code
+                                     50 ; ram data
                                      51 ;--------------------------------------------------------
-                                     52 	.area _CODE
-                                     53 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:30: void UpdateCameraPosition(uint8_t dividor){
-                                     54 ;	---------------------------------
-                                     55 ; Function UpdateCameraPosition
-                                     56 ; ---------------------------------
-      000000                         57 _UpdateCameraPosition::
-                                     58 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:31: }
-      000000 C9               [16]   59 	ret
-                                     60 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:32: void SetupVRAM(){
-                                     61 ;	---------------------------------
-                                     62 ; Function SetupVRAM
-                                     63 ; ---------------------------------
-      000001                         64 _SetupVRAM::
-                                     65 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:33: }
-      000001 C9               [16]   66 	ret
-                                     67 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:35: void StartGameplay(){
-                                     68 ;	---------------------------------
-                                     69 ; Function StartGameplay
-                                     70 ; ---------------------------------
-      000002                         71 _StartGameplay::
-                                     72 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:36: }
-      000002 C9               [16]   73 	ret
-                                     74 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:39: uint8_t CheckBackgroundTileIsWalkable(int8_t nextColumn, int8_t nextRow){
-                                     75 ;	---------------------------------
-                                     76 ; Function CheckBackgroundTileIsWalkable
-                                     77 ; ---------------------------------
-      000003                         78 _CheckBackgroundTileIsWalkable::
-                                     79 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:40: return 0;
-      000003 AF               [ 4]   80 	xor	a, a
-                                     81 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:41: }
-      000004 C9               [16]   82 	ret
-                                     83 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:44: void SetupGameplay(){
-                                     84 ;	---------------------------------
-                                     85 ; Function SetupGameplay
-                                     86 ; ---------------------------------
-      000005                         87 _SetupGameplay::
-                                     88 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:46: }
-      000005 C9               [16]   89 	ret
-                                     90 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:48: void UpdateGlobalFrameCounters(){
-                                     91 ;	---------------------------------
-                                     92 ; Function UpdateGlobalFrameCounters
-                                     93 ; ---------------------------------
-      000006                         94 _UpdateGlobalFrameCounters::
-                                     95 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:49: }
-      000006 C9               [16]   96 	ret
-                                     97 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:51: void BlinkLevelBlueAndWhite_Halting(){
-                                     98 ;	---------------------------------
-                                     99 ; Function BlinkLevelBlueAndWhite_Halting
-                                    100 ; ---------------------------------
-      000007                        101 _BlinkLevelBlueAndWhite_Halting::
-                                    102 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:52: }
-      000007 C9               [16]  103 	ret
-                                    104 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:54: void main(){
-                                    105 ;	---------------------------------
-                                    106 ; Function main
-                                    107 ; ---------------------------------
-      000008                        108 _main::
-                                    109 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:55: }
-      000008 C9               [16]  110 	ret
-                                    111 	.area _CODE
-                                    112 	.area _INITIALIZER
-                                    113 	.area _CABS (ABS)
+                                     52 	.area _INITIALIZED
+                                     53 ;--------------------------------------------------------
+                                     54 ; absolute external ram data
+                                     55 ;--------------------------------------------------------
+                                     56 	.area _DABS (ABS)
+                                     57 ;--------------------------------------------------------
+                                     58 ; global & static initialisations
+                                     59 ;--------------------------------------------------------
+                                     60 	.area _HOME
+                                     61 	.area _GSINIT
+                                     62 	.area _GSFINAL
+                                     63 	.area _GSINIT
+                                     64 ;--------------------------------------------------------
+                                     65 ; Home
+                                     66 ;--------------------------------------------------------
+                                     67 	.area _HOME
+                                     68 	.area _HOME
+                                     69 ;--------------------------------------------------------
+                                     70 ; code
+                                     71 ;--------------------------------------------------------
+                                     72 	.area _CODE
+                                     73 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:30: void UpdateCameraPosition(uint8_t dividor){
+                                     74 ;	---------------------------------
+                                     75 ; Function UpdateCameraPosition
+                                     76 ; ---------------------------------
+      000000                         77 _UpdateCameraPosition::
+      000000 E8 F7            [16]   78 	add	sp, #-9
+      000002 F8 08            [12]   79 	ldhl	sp,	#8
+      000004 77               [ 8]   80 	ld	(hl), a
+                                     81 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:33: uint8_t playerX=pacman.column*8+Directions[pacman.direction].x*(pacman.move>>4);;
+      000005 FAr03r00         [16]   82 	ld	a, (#(_pacman + 3) + 0)
+      000008 87               [ 4]   83 	add	a, a
+      000009 87               [ 4]   84 	add	a, a
+      00000A 87               [ 4]   85 	add	a, a
+      00000B 4F               [ 4]   86 	ld	c, a
+      00000C FAr02r00         [16]   87 	ld	a, (#(_pacman + 2) + 0)
+      00000F 6F               [ 4]   88 	ld	l, a
+                                     89 ;	spillPairReg hl
+                                     90 ;	spillPairReg hl
+      000010 26 00            [ 8]   91 	ld	h, #0x00
+                                     92 ;	spillPairReg hl
+                                     93 ;	spillPairReg hl
+      000012 29               [ 8]   94 	add	hl, hl
+      000013 29               [ 8]   95 	add	hl, hl
+      000014 5D               [ 4]   96 	ld	e, l
+      000015 54               [ 4]   97 	ld	d, h
+      000016 21r00r00         [12]   98 	ld	hl, #_Directions
+      000019 19               [ 8]   99 	add	hl, de
+      00001A E5               [16]  100 	push	hl
+      00001B 7D               [ 4]  101 	ld	a, l
+      00001C F8 08            [12]  102 	ldhl	sp,	#8
+      00001E 77               [ 8]  103 	ld	(hl), a
+      00001F E1               [12]  104 	pop	hl
+      000020 7C               [ 4]  105 	ld	a, h
+      000021 F8 07            [12]  106 	ldhl	sp,	#7
+      000023 32               [ 8]  107 	ld	(hl-), a
+      000024 2A               [ 8]  108 	ld	a, (hl+)
+      000025 5F               [ 4]  109 	ld	e, a
+      000026 56               [ 8]  110 	ld	d, (hl)
+      000027 1A               [ 8]  111 	ld	a, (de)
+      000028 47               [ 4]  112 	ld	b, a
+      000029 21r00r00         [12]  113 	ld	hl, #_pacman
+      00002C 2A               [ 8]  114 	ld	a,	(hl+)
+      00002D 66               [ 8]  115 	ld	h, (hl)
+                                    116 ;	spillPairReg hl
+                                    117 ;	spillPairReg hl
+                                    118 ;	spillPairReg hl
+      00002E 57               [ 4]  119 	ld	d, a
+      00002F CB 3C            [ 8]  120 	srl	h
+      000031 CB 1A            [ 8]  121 	rr	d
+      000033 CB 3C            [ 8]  122 	srl	h
+      000035 CB 1A            [ 8]  123 	rr	d
+      000037 CB 3C            [ 8]  124 	srl	h
+      000039 CB 1A            [ 8]  125 	rr	d
+      00003B CB 3C            [ 8]  126 	srl	h
+      00003D CB 1A            [ 8]  127 	rr	d
+      00003F C5               [16]  128 	push	bc
+      000040 D5               [16]  129 	push	de
+      000041 5A               [ 4]  130 	ld	e, d
+      000042 78               [ 4]  131 	ld	a, b
+      000043 CDr00r00         [24]  132 	call	__muluschar
+      000046 79               [ 4]  133 	ld	a, c
+      000047 D1               [12]  134 	pop	de
+      000048 C1               [12]  135 	pop	bc
+      000049 81               [ 4]  136 	add	a, c
+      00004A 4F               [ 4]  137 	ld	c, a
+                                    138 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:34: uint8_t playerY=pacman.row*8+Directions[pacman.direction].y*(pacman.move>>4);;
+      00004B FAr05r00         [16]  139 	ld	a, (#_pacman + 5)
+      00004E 87               [ 4]  140 	add	a, a
+      00004F 87               [ 4]  141 	add	a, a
+      000050 87               [ 4]  142 	add	a, a
+      000051 47               [ 4]  143 	ld	b, a
+      000052 F8 06            [12]  144 	ldhl	sp,	#6
+      000054 2A               [ 8]  145 	ld	a, (hl+)
+      000055 66               [ 8]  146 	ld	h, (hl)
+                                    147 ;	spillPairReg hl
+                                    148 ;	spillPairReg hl
+      000056 6F               [ 4]  149 	ld	l, a
+                                    150 ;	spillPairReg hl
+                                    151 ;	spillPairReg hl
+      000057 23               [ 8]  152 	inc	hl
+      000058 23               [ 8]  153 	inc	hl
+      000059 6E               [ 8]  154 	ld	l, (hl)
+                                    155 ;	spillPairReg hl
+      00005A C5               [16]  156 	push	bc
+      00005B 5A               [ 4]  157 	ld	e, d
+      00005C 7D               [ 4]  158 	ld	a, l
+      00005D CDr00r00         [24]  159 	call	__muluschar
+      000060 79               [ 4]  160 	ld	a, c
+      000061 C1               [12]  161 	pop	bc
+      000062 80               [ 4]  162 	add	a, b
+      000063 F8 07            [12]  163 	ldhl	sp,	#7
+      000065 77               [ 8]  164 	ld	(hl), a
+                                    165 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:39: uint16_t targetCameraX=SCX_REG;
+      000066 F0r00            [12]  166 	ldh	a, (_SCX_REG + 0)
+                                    167 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:40: uint16_t targetCameraY=SCY_REG;
+      000068 F0r00            [12]  168 	ldh	a, (_SCY_REG + 0)
+                                    169 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:43: if(playerX<Map_WIDTH/3)targetCameraX=0;
+      00006A 79               [ 4]  170 	ld	a, c
+      00006B D6 38            [ 8]  171 	sub	a, #0x38
+      00006D 30 07            [12]  172 	jr	NC, 00105$
+      00006F AF               [ 4]  173 	xor	a, a
+      000070 F8 04            [12]  174 	ldhl	sp,	#4
+      000072 22               [ 8]  175 	ld	(hl+), a
+      000073 77               [ 8]  176 	ld	(hl), a
+      000074 18 2E            [12]  177 	jr	00106$
+      000076                        178 00105$:
+                                    179 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:44: else if(playerX<(Map_WIDTH/3)*2)targetCameraX=((playerX-Map_WIDTH/3)*sidebarWidth)/(Map_WIDTH/3);
+      000076 79               [ 4]  180 	ld	a, c
+      000077 D6 70            [ 8]  181 	sub	a, #0x70
+      000079 30 22            [12]  182 	jr	NC, 00102$
+      00007B 06 00            [ 8]  183 	ld	b, #0x00
+      00007D 79               [ 4]  184 	ld	a, c
+      00007E C6 C8            [ 8]  185 	add	a, #0xc8
+      000080 4F               [ 4]  186 	ld	c, a
+      000081 78               [ 4]  187 	ld	a, b
+      000082 CE FF            [ 8]  188 	adc	a, #0xff
+      000084 47               [ 4]  189 	ld	b, a
+      000085 69               [ 4]  190 	ld	l, c
+      000086 60               [ 4]  191 	ld	h, b
+      000087 29               [ 8]  192 	add	hl, hl
+      000088 09               [ 8]  193 	add	hl, bc
+      000089 29               [ 8]  194 	add	hl, hl
+      00008A 09               [ 8]  195 	add	hl, bc
+      00008B 29               [ 8]  196 	add	hl, hl
+      00008C 29               [ 8]  197 	add	hl, hl
+      00008D 29               [ 8]  198 	add	hl, hl
+      00008E 01 38 00         [12]  199 	ld	bc, #0x0038
+      000091 5D               [ 4]  200 	ld	e, l
+      000092 54               [ 4]  201 	ld	d, h
+      000093 CDr00r00         [24]  202 	call	__divsint
+      000096 F8 04            [12]  203 	ldhl	sp,	#4
+      000098 79               [ 4]  204 	ld	a, c
+      000099 22               [ 8]  205 	ld	(hl+), a
+      00009A 70               [ 8]  206 	ld	(hl), b
+      00009B 18 07            [12]  207 	jr	00106$
+      00009D                        208 00102$:
+                                    209 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:45: else targetCameraX=sidebarWidth;
+      00009D F8 04            [12]  210 	ldhl	sp,	#4
+      00009F 3E 38            [ 8]  211 	ld	a, #0x38
+      0000A1 22               [ 8]  212 	ld	(hl+), a
+      0000A2 AF               [ 4]  213 	xor	a, a
+      0000A3 77               [ 8]  214 	ld	(hl), a
+      0000A4                        215 00106$:
+                                    216 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:48: if(playerY<Map_HEIGHT/3)targetCameraY=0;
+      0000A4 F8 07            [12]  217 	ldhl	sp,	#7
+      0000A6 7E               [ 8]  218 	ld	a, (hl)
+      0000A7 D6 48            [ 8]  219 	sub	a, #0x48
+      0000A9 30 07            [12]  220 	jr	NC, 00111$
+      0000AB AF               [ 4]  221 	xor	a, a
+      0000AC F8 00            [12]  222 	ldhl	sp,	#0
+      0000AE 22               [ 8]  223 	ld	(hl+), a
+      0000AF 77               [ 8]  224 	ld	(hl), a
+      0000B0 18 2D            [12]  225 	jr	00112$
+      0000B2                        226 00111$:
+                                    227 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:49: else if(playerY<(Map_HEIGHT/3)*2)targetCameraY=((playerY-Map_HEIGHT/3)*heightRemainder)/(Map_HEIGHT/3);
+      0000B2 F8 07            [12]  228 	ldhl	sp,	#7
+      0000B4 7E               [ 8]  229 	ld	a, (hl)
+      0000B5 D6 90            [ 8]  230 	sub	a, #0x90
+      0000B7 30 1F            [12]  231 	jr	NC, 00108$
+      0000B9 7E               [ 8]  232 	ld	a, (hl)
+      0000BA 0E 00            [ 8]  233 	ld	c, #0x00
+      0000BC C6 B8            [ 8]  234 	add	a, #0xb8
+      0000BE 6F               [ 4]  235 	ld	l, a
+                                    236 ;	spillPairReg hl
+                                    237 ;	spillPairReg hl
+      0000BF 79               [ 4]  238 	ld	a, c
+      0000C0 CE FF            [ 8]  239 	adc	a, #0xff
+      0000C2 67               [ 4]  240 	ld	h, a
+                                    241 ;	spillPairReg hl
+                                    242 ;	spillPairReg hl
+      0000C3 4D               [ 4]  243 	ld	c, l
+      0000C4 44               [ 4]  244 	ld	b, h
+      0000C5 29               [ 8]  245 	add	hl, hl
+      0000C6 29               [ 8]  246 	add	hl, hl
+      0000C7 29               [ 8]  247 	add	hl, hl
+      0000C8 09               [ 8]  248 	add	hl, bc
+      0000C9 29               [ 8]  249 	add	hl, hl
+      0000CA 29               [ 8]  250 	add	hl, hl
+      0000CB 29               [ 8]  251 	add	hl, hl
+      0000CC 01 48 00         [12]  252 	ld	bc, #0x0048
+      0000CF 5D               [ 4]  253 	ld	e, l
+      0000D0 54               [ 4]  254 	ld	d, h
+      0000D1 CDr00r00         [24]  255 	call	__divsint
+      0000D4 E1               [12]  256 	pop	hl
+      0000D5 C5               [16]  257 	push	bc
+      0000D6 18 07            [12]  258 	jr	00112$
+      0000D8                        259 00108$:
+                                    260 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:50: else targetCameraY=heightRemainder;
+      0000D8 F8 00            [12]  261 	ldhl	sp,	#0
+      0000DA 3E 48            [ 8]  262 	ld	a, #0x48
+      0000DC 22               [ 8]  263 	ld	(hl+), a
+      0000DD AF               [ 4]  264 	xor	a, a
+      0000DE 77               [ 8]  265 	ld	(hl), a
+      0000DF                        266 00112$:
+                                    267 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:53: int16_t cameraXDiff=targetCameraX-SCX_REG;
+      0000DF F0r00            [12]  268 	ldh	a, (_SCX_REG + 0)
+      0000E1 F8 06            [12]  269 	ldhl	sp,	#6
+      0000E3 22               [ 8]  270 	ld	(hl+), a
+      0000E4 36 00            [12]  271 	ld	(hl), #0x00
+      0000E6 F8 04            [12]  272 	ldhl	sp,	#4
+      0000E8 3A               [ 8]  273 	ld	a, (hl-)
+      0000E9 2B               [ 8]  274 	dec	hl
+      0000EA 77               [ 8]  275 	ld	(hl), a
+      0000EB F8 05            [12]  276 	ldhl	sp,	#5
+      0000ED 3A               [ 8]  277 	ld	a, (hl-)
+      0000EE 2B               [ 8]  278 	dec	hl
+      0000EF 77               [ 8]  279 	ld	(hl), a
+      0000F0 F8 06            [12]  280 	ldhl	sp,	#6
+      0000F2 3A               [ 8]  281 	ld	a, (hl-)
+      0000F3 2B               [ 8]  282 	dec	hl
+      0000F4 77               [ 8]  283 	ld	(hl), a
+      0000F5 F8 07            [12]  284 	ldhl	sp,	#7
+      0000F7 3A               [ 8]  285 	ld	a, (hl-)
+      0000F8 2B               [ 8]  286 	dec	hl
+      0000F9 32               [ 8]  287 	ld	(hl-), a
+      0000FA 2B               [ 8]  288 	dec	hl
+      0000FB 2B               [ 8]  289 	dec	hl
+      0000FC 2A               [ 8]  290 	ld	a, (hl+)
+      0000FD 5F               [ 4]  291 	ld	e, a
+      0000FE 2A               [ 8]  292 	ld	a, (hl+)
+      0000FF 57               [ 4]  293 	ld	d, a
+      000100 2A               [ 8]  294 	ld	a,	(hl+)
+      000101 66               [ 8]  295 	ld	h, (hl)
+      000102 6F               [ 4]  296 	ld	l, a
+      000103 7B               [ 4]  297 	ld	a, e
+      000104 95               [ 4]  298 	sub	a, l
+      000105 5F               [ 4]  299 	ld	e, a
+      000106 7A               [ 4]  300 	ld	a, d
+      000107 9C               [ 4]  301 	sbc	a, h
+      000108 F8 07            [12]  302 	ldhl	sp,	#7
+      00010A 32               [ 8]  303 	ld	(hl-), a
+                                    304 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:54: int16_t cameraYDiff=targetCameraY-SCY_REG;
+      00010B 7B               [ 4]  305 	ld	a, e
+      00010C 32               [ 8]  306 	ld	(hl-), a
+      00010D 2B               [ 8]  307 	dec	hl
+      00010E F0r00            [12]  308 	ldh	a, (_SCY_REG + 0)
+      000110 22               [ 8]  309 	ld	(hl+), a
+      000111 AF               [ 4]  310 	xor	a, a
+      000112 32               [ 8]  311 	ld	(hl-), a
+      000113 C1               [12]  312 	pop	bc
+      000114 C5               [16]  313 	push	bc
+      000115 2A               [ 8]  314 	ld	a, (hl+)
+      000116 5F               [ 4]  315 	ld	e, a
+      000117 3A               [ 8]  316 	ld	a, (hl-)
+      000118 57               [ 4]  317 	ld	d, a
+      000119 79               [ 4]  318 	ld	a, c
+      00011A 93               [ 4]  319 	sub	a, e
+      00011B 4F               [ 4]  320 	ld	c, a
+      00011C 78               [ 4]  321 	ld	a, b
+      00011D 9A               [ 4]  322 	sbc	a, d
+      00011E 47               [ 4]  323 	ld	b, a
+      00011F 79               [ 4]  324 	ld	a, c
+      000120 22               [ 8]  325 	ld	(hl+), a
+      000121 70               [ 8]  326 	ld	(hl), b
+                                    327 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:57: SCX_REG+=cameraXDiff/dividor;
+      000122 F8 08            [12]  328 	ldhl	sp,	#8
+      000124 3A               [ 8]  329 	ld	a, (hl-)
+      000125 2B               [ 8]  330 	dec	hl
+      000126 5F               [ 4]  331 	ld	e, a
+      000127 16 00            [ 8]  332 	ld	d, #0x00
+      000129 D5               [16]  333 	push	de
+      00012A 4B               [ 4]  334 	ld	c, e
+      00012B 42               [ 4]  335 	ld	b, d
+      00012C 2A               [ 8]  336 	ld	a, (hl+)
+      00012D 5F               [ 4]  337 	ld	e, a
+      00012E 56               [ 8]  338 	ld	d, (hl)
+      00012F CDr00r00         [24]  339 	call	__divsint
+      000132 D1               [12]  340 	pop	de
+      000133 F0r00            [12]  341 	ldh	a, (_SCX_REG + 0)
+      000135 81               [ 4]  342 	add	a, c
+      000136 E0r00            [12]  343 	ldh	(_SCX_REG + 0), a
+                                    344 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:58: SCY_REG+=cameraYDiff/dividor;
+      000138 4B               [ 4]  345 	ld	c, e
+      000139 42               [ 4]  346 	ld	b, d
+      00013A F8 04            [12]  347 	ldhl	sp,	#4
+      00013C 2A               [ 8]  348 	ld	a, (hl+)
+      00013D 5F               [ 4]  349 	ld	e, a
+      00013E 56               [ 8]  350 	ld	d, (hl)
+      00013F CDr00r00         [24]  351 	call	__divsint
+      000142 F0r00            [12]  352 	ldh	a, (_SCY_REG + 0)
+      000144 81               [ 4]  353 	add	a, c
+      000145 E0r00            [12]  354 	ldh	(_SCY_REG + 0), a
+                                    355 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:59: }
+      000147 E8 09            [16]  356 	add	sp, #9
+      000149 C9               [16]  357 	ret
+                                    358 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:61: void SetupVRAM(){
+                                    359 ;	---------------------------------
+                                    360 ; Function SetupVRAM
+                                    361 ; ---------------------------------
+      00014A                        362 _SetupVRAM::
+                                    363 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:66: set_sprite_palette(0,5,Pacman_palettes);
+      00014A 11r00r00         [12]  364 	ld	de, #_Pacman_palettes
+      00014D D5               [16]  365 	push	de
+      00014E 21 00 05         [12]  366 	ld	hl, #0x500
+      000151 E5               [16]  367 	push	hl
+      000152 CDr00r00         [24]  368 	call	_set_sprite_palette
+      000155 E8 04            [16]  369 	add	sp, #4
+                                    370 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:67: set_bkg_palette(0,5,Map_palettes);
+      000157 11r00r00         [12]  371 	ld	de, #_Map_palettes
+      00015A D5               [16]  372 	push	de
+      00015B 21 00 05         [12]  373 	ld	hl, #0x500
+      00015E E5               [16]  374 	push	hl
+      00015F CDr00r00         [24]  375 	call	_set_bkg_palette
+      000162 E8 04            [16]  376 	add	sp, #4
+                                    377 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:70: set_bkg_data(0,Map_TILE_COUNT,Map_tiles);
+      000164 11r00r00         [12]  378 	ld	de, #_Map_tiles
+      000167 D5               [16]  379 	push	de
+      000168 21 00 12         [12]  380 	ld	hl, #0x1200
+      00016B E5               [16]  381 	push	hl
+      00016C CDr00r00         [24]  382 	call	_set_bkg_data
+      00016F E8 04            [16]  383 	add	sp, #4
+                                    384 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:71: set_bkg_data(DOTS_TILES_START,Dots_TILE_COUNT,Dots_tiles);
+      000171 11r00r00         [12]  385 	ld	de, #_Dots_tiles
+      000174 D5               [16]  386 	push	de
+      000175 21 12 03         [12]  387 	ld	hl, #0x312
+      000178 E5               [16]  388 	push	hl
+      000179 CDr00r00         [24]  389 	call	_set_bkg_data
+      00017C E8 04            [16]  390 	add	sp, #4
+                                    391 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:72: set_bkg_data(NUMBERS_TILES_START,Numbers_TILE_COUNT,Numbers_tiles);
+      00017E 11r00r00         [12]  392 	ld	de, #_Numbers_tiles
+      000181 D5               [16]  393 	push	de
+      000182 21 15 0A         [12]  394 	ld	hl, #0xa15
+      000185 E5               [16]  395 	push	hl
+      000186 CDr00r00         [24]  396 	call	_set_bkg_data
+      000189 E8 04            [16]  397 	add	sp, #4
+                                    398 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:73: set_bkg_data(READYTEXT_TILES_START,ReadyText_TILE_COUNT,ReadyText_tiles);
+      00018B 11r00r00         [12]  399 	ld	de, #_ReadyText_tiles
+      00018E D5               [16]  400 	push	de
+      00018F 21 1F 06         [12]  401 	ld	hl, #0x61f
+      000192 E5               [16]  402 	push	hl
+      000193 CDr00r00         [24]  403 	call	_set_bkg_data
+      000196 E8 04            [16]  404 	add	sp, #4
+                                    405 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:74: set_bkg_data(ONEUPTEXT_TILES_START,OneUpText_TILE_COUNT,OneUpText_tiles);
+      000198 11r00r00         [12]  406 	ld	de, #_OneUpText_tiles
+      00019B D5               [16]  407 	push	de
+      00019C 21 25 03         [12]  408 	ld	hl, #0x325
+      00019F E5               [16]  409 	push	hl
+      0001A0 CDr00r00         [24]  410 	call	_set_bkg_data
+      0001A3 E8 04            [16]  411 	add	sp, #4
+                                    412 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:75: set_bkg_data(HIGHTEXT_TILES_START,HighText_TILE_COUNT,HighText_tiles);
+      0001A5 11r00r00         [12]  413 	ld	de, #_HighText_tiles
+      0001A8 D5               [16]  414 	push	de
+      0001A9 21 28 03         [12]  415 	ld	hl, #0x328
+      0001AC E5               [16]  416 	push	hl
+      0001AD CDr00r00         [24]  417 	call	_set_bkg_data
+      0001B0 E8 04            [16]  418 	add	sp, #4
+                                    419 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:76: set_bkg_data(BLACKSQUARE_TILES_START,BlackSquare_TILE_COUNT,BlackSquare_tiles);
+      0001B2 11r00r00         [12]  420 	ld	de, #_BlackSquare_tiles
+      0001B5 D5               [16]  421 	push	de
+      0001B6 21 2B 01         [12]  422 	ld	hl, #0x12b
+      0001B9 E5               [16]  423 	push	hl
+      0001BA CDr00r00         [24]  424 	call	_set_bkg_data
+      0001BD E8 04            [16]  425 	add	sp, #4
+                                    426 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:79: set_sprite_data(GHOSTS_SPRITES_START,Pacman_TILE_COUNT,Ghosts_tiles);
+      0001BF 11r00r00         [12]  427 	ld	de, #_Ghosts_tiles
+      0001C2 D5               [16]  428 	push	de
+      0001C3 21 2C 2C         [12]  429 	ld	hl, #0x2c2c
+      0001C6 E5               [16]  430 	push	hl
+      0001C7 CDr00r00         [24]  431 	call	_set_sprite_data
+      0001CA E8 04            [16]  432 	add	sp, #4
+                                    433 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:80: set_sprite_data(GHOSTS_SCARED_SPRITES_START,GhostsScared_TILE_COUNT,GhostsScared_tiles);
+      0001CC 11r00r00         [12]  434 	ld	de, #_GhostsScared_tiles
+      0001CF D5               [16]  435 	push	de
+      0001D0 21 4C 10         [12]  436 	ld	hl, #0x104c
+      0001D3 E5               [16]  437 	push	hl
+      0001D4 CDr00r00         [24]  438 	call	_set_sprite_data
+      0001D7 E8 04            [16]  439 	add	sp, #4
+                                    440 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:81: set_sprite_data(GHOSTS_EATEN_SPRITES_START,GhostsEaten_TILE_COUNT,GhostsEaten_tiles);
+      0001D9 11r00r00         [12]  441 	ld	de, #_GhostsEaten_tiles
+      0001DC D5               [16]  442 	push	de
+      0001DD 21 5C 10         [12]  443 	ld	hl, #0x105c
+      0001E0 E5               [16]  444 	push	hl
+      0001E1 CDr00r00         [24]  445 	call	_set_sprite_data
+      0001E4 E8 04            [16]  446 	add	sp, #4
+                                    447 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:82: set_sprite_data(TARGET_TILES_SPRITES_START,TargetTiles_TILE_COUNT,TargetTiles_tiles);
+      0001E6 11r00r00         [12]  448 	ld	de, #_TargetTiles_tiles
+      0001E9 D5               [16]  449 	push	de
+      0001EA 21 6C 08         [12]  450 	ld	hl, #0x86c
+      0001ED E5               [16]  451 	push	hl
+      0001EE CDr00r00         [24]  452 	call	_set_sprite_data
+      0001F1 E8 04            [16]  453 	add	sp, #4
+                                    454 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:85: VBK_REG=1; set_bkg_tiles(0,0,21,27,Map_map_attributes);
+      0001F3 3E 01            [ 8]  455 	ld	a, #0x01
+      0001F5 E0r00            [12]  456 	ldh	(_VBK_REG + 0), a
+      0001F7 11r00r00         [12]  457 	ld	de, #_Map_map_attributes
+      0001FA D5               [16]  458 	push	de
+      0001FB 21 15 1B         [12]  459 	ld	hl, #0x1b15
+      0001FE E5               [16]  460 	push	hl
+      0001FF AF               [ 4]  461 	xor	a, a
+      000200 0F               [ 4]  462 	rrca
+      000201 F5               [16]  463 	push	af
+      000202 CDr00r00         [24]  464 	call	_set_bkg_tiles
+      000205 E8 06            [16]  465 	add	sp, #6
+                                    466 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:86: VBK_REG=0; set_bkg_tiles(0,0,21,27,Map_map);
+      000207 AF               [ 4]  467 	xor	a, a
+      000208 E0r00            [12]  468 	ldh	(_VBK_REG + 0), a
+      00020A 11r00r00         [12]  469 	ld	de, #_Map_map
+      00020D D5               [16]  470 	push	de
+      00020E 21 15 1B         [12]  471 	ld	hl, #0x1b15
+      000211 E5               [16]  472 	push	hl
+      000212 AF               [ 4]  473 	xor	a, a
+      000213 0F               [ 4]  474 	rrca
+      000214 F5               [16]  475 	push	af
+      000215 CDr00r00         [24]  476 	call	_set_bkg_tiles
+      000218 E8 06            [16]  477 	add	sp, #6
+                                    478 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:89: blank=get_bkg_tile_xy(10,13);
+      00021A 21 0A 0D         [12]  479 	ld	hl, #0xd0a
+      00021D E5               [16]  480 	push	hl
+      00021E CDr00r00         [24]  481 	call	_get_bkg_tile_xy
+      000221 E1               [12]  482 	pop	hl
+      000222 21r00r00         [12]  483 	ld	hl, #_blank
+      000225 73               [ 8]  484 	ld	(hl), e
+                                    485 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:90: }
+      000226 C9               [16]  486 	ret
+                                    487 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:92: void StartGameplay(){
+                                    488 ;	---------------------------------
+                                    489 ; Function StartGameplay
+                                    490 ; ---------------------------------
+      000227                        491 _StartGameplay::
+                                    492 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:93: }
+      000227 C9               [16]  493 	ret
+                                    494 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:96: uint8_t CheckBackgroundTileIsWalkable(int8_t nextColumn, int8_t nextRow){
+                                    495 ;	---------------------------------
+                                    496 ; Function CheckBackgroundTileIsWalkable
+                                    497 ; ---------------------------------
+      000228                        498 _CheckBackgroundTileIsWalkable::
+                                    499 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:97: return 0;
+      000228 AF               [ 4]  500 	xor	a, a
+                                    501 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:98: }
+      000229 C9               [16]  502 	ret
+                                    503 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:102: void SetupGameplay(){
+                                    504 ;	---------------------------------
+                                    505 ; Function SetupGameplay
+                                    506 ; ---------------------------------
+      00022A                        507 _SetupGameplay::
+      00022A E8 F8            [16]  508 	add	sp, #-8
+                                    509 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:106: NR52_REG = 0x80; // is 1000 0000 in binary and turns on sound
+      00022C 3E 80            [ 8]  510 	ld	a, #0x80
+      00022E E0r00            [12]  511 	ldh	(_NR52_REG + 0), a
+                                    512 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:107: NR50_REG = 0x77; // sets the volume for both left and right channel just set to max 0x77
+      000230 3E 77            [ 8]  513 	ld	a, #0x77
+      000232 E0r00            [12]  514 	ldh	(_NR50_REG + 0), a
+                                    515 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:108: NR51_REG = 0xFF; // is 1111 1111 in binary, select which chanels we want to use in this case all of them. One bit for the L one bit for the R of all four channels
+      000234 3E FF            [ 8]  516 	ld	a, #0xff
+      000236 E0r00            [12]  517 	ldh	(_NR51_REG + 0), a
+                                    518 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:110: DISPLAY_ON;
+      000238 F0r00            [12]  519 	ldh	a, (_LCDC_REG + 0)
+      00023A F6 80            [ 8]  520 	or	a, #0x80
+      00023C E0r00            [12]  521 	ldh	(_LCDC_REG + 0), a
+                                    522 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:111: SHOW_SPRITES;
+      00023E F0r00            [12]  523 	ldh	a, (_LCDC_REG + 0)
+      000240 F6 02            [ 8]  524 	or	a, #0x02
+      000242 E0r00            [12]  525 	ldh	(_LCDC_REG + 0), a
+                                    526 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:112: SPRITES_8x16;
+      000244 F0r00            [12]  527 	ldh	a, (_LCDC_REG + 0)
+      000246 F6 04            [ 8]  528 	or	a, #0x04
+      000248 E0r00            [12]  529 	ldh	(_LCDC_REG + 0), a
+                                    530 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:113: SHOW_BKG;
+      00024A F0r00            [12]  531 	ldh	a, (_LCDC_REG + 0)
+      00024C F6 01            [ 8]  532 	or	a, #0x01
+      00024E E0r00            [12]  533 	ldh	(_LCDC_REG + 0), a
+                                    534 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:114: SHOW_WIN;  
+      000250 F0r00            [12]  535 	ldh	a, (_LCDC_REG + 0)
+      000252 F6 20            [ 8]  536 	or	a, #0x20
+      000254 E0r00            [12]  537 	ldh	(_LCDC_REG + 0), a
+                                    538 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:116: score=0;
+      000256 AF               [ 4]  539 	xor	a, a
+      000257 21r00r00         [12]  540 	ld	hl, #_score
+      00025A 22               [ 8]  541 	ld	(hl+), a
+      00025B 77               [ 8]  542 	ld	(hl), a
+                                    543 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:118: SetupVRAM();
+      00025C CDr4Ar01         [24]  544 	call	_SetupVRAM
+                                    545 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:119: SetupHUD();
+      00025F CDr00r00         [24]  546 	call	_SetupHUD
+                                    547 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:120: SetupDots();
+      000262 CDr00r00         [24]  548 	call	_SetupDots
+                                    549 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:121: SetupPacman();    
+      000265 CDr00r00         [24]  550 	call	_SetupPacman
+                                    551 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:122: SetupGhosts();
+      000268 CDr00r00         [24]  552 	call	_SetupGhosts
+                                    553 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:126: UpdateScore();
+      00026B CDr00r00         [24]  554 	call	_UpdateScore
+                                    555 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:127: UpdateCameraPosition(1);
+      00026E 3E 01            [ 8]  556 	ld	a, #0x01
+      000270 CDr00r00         [24]  557 	call	_UpdateCameraPosition
+                                    558 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:128: DrawGhost(0);
+      000273 AF               [ 4]  559 	xor	a, a
+      000274 CDr00r00         [24]  560 	call	_DrawGhost
+                                    561 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:129: DrawGhost(1);
+      000277 3E 01            [ 8]  562 	ld	a, #0x01
+      000279 CDr00r00         [24]  563 	call	_DrawGhost
+                                    564 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:130: DrawGhost(2);
+      00027C 3E 02            [ 8]  565 	ld	a, #0x02
+      00027E CDr00r00         [24]  566 	call	_DrawGhost
+                                    567 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:131: DrawGhost(3);
+      000281 3E 03            [ 8]  568 	ld	a, #0x03
+      000283 CDr00r00         [24]  569 	call	_DrawGhost
+                                    570 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:132: DrawPacman();
+      000286 CDr00r00         [24]  571 	call	_DrawPacman
+                                    572 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:134: for(uint8_t i=0;i<21;i++){
+      000289 F8 06            [12]  573 	ldhl	sp,	#6
+      00028B 36 00            [12]  574 	ld	(hl), #0x00
+      00028D                        575 00107$:
+      00028D F8 06            [12]  576 	ldhl	sp,	#6
+      00028F 7E               [ 8]  577 	ld	a, (hl)
+      000290 D6 15            [ 8]  578 	sub	a, #0x15
+      000292 D2r3Ar03         [16]  579 	jp	NC, 00109$
+                                    580 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:135: for(uint8_t j=0;j<27;j++){
+      000295 4E               [ 8]  581 	ld	c, (hl)
+      000296 06 00            [ 8]  582 	ld	b, #0x00
+      000298 69               [ 4]  583 	ld	l, c
+      000299 60               [ 4]  584 	ld	h, b
+      00029A 29               [ 8]  585 	add	hl, hl
+      00029B 09               [ 8]  586 	add	hl, bc
+      00029C 29               [ 8]  587 	add	hl, hl
+      00029D 29               [ 8]  588 	add	hl, hl
+      00029E 09               [ 8]  589 	add	hl, bc
+      00029F 29               [ 8]  590 	add	hl, hl
+      0002A0 09               [ 8]  591 	add	hl, bc
+      0002A1 29               [ 8]  592 	add	hl, hl
+      0002A2 29               [ 8]  593 	add	hl, hl
+      0002A3 01r00r00         [12]  594 	ld	bc,#_TileSideWalkability
+      0002A6 09               [ 8]  595 	add	hl,bc
+      0002A7 33               [ 8]  596 	inc	sp
+      0002A8 33               [ 8]  597 	inc	sp
+      0002A9 E5               [16]  598 	push	hl
+      0002AA F8 07            [12]  599 	ldhl	sp,	#7
+      0002AC 36 00            [12]  600 	ld	(hl), #0x00
+      0002AE                        601 00104$:
+      0002AE F8 07            [12]  602 	ldhl	sp,	#7
+      0002B0 7E               [ 8]  603 	ld	a, (hl)
+      0002B1 D6 1B            [ 8]  604 	sub	a, #0x1b
+      0002B3 D2r34r03         [16]  605 	jp	NC, 00108$
+                                    606 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:137: TileSideWalkability[i][j][DOWN]=CheckBackgroundTileIsWalkable(i,j+1);
+      0002B6 7E               [ 8]  607 	ld	a, (hl)
+      0002B7 87               [ 4]  608 	add	a, a
+      0002B8 87               [ 4]  609 	add	a, a
+      0002B9 F8 02            [12]  610 	ldhl	sp,	#2
+      0002BB 77               [ 8]  611 	ld	(hl), a
+      0002BC D1               [12]  612 	pop	de
+      0002BD D5               [16]  613 	push	de
+      0002BE 6E               [ 8]  614 	ld	l, (hl)
+      0002BF 26 00            [ 8]  615 	ld	h, #0x00
+      0002C1 19               [ 8]  616 	add	hl, de
+      0002C2 E5               [16]  617 	push	hl
+      0002C3 7D               [ 4]  618 	ld	a, l
+      0002C4 F8 05            [12]  619 	ldhl	sp,	#5
+      0002C6 77               [ 8]  620 	ld	(hl), a
+      0002C7 E1               [12]  621 	pop	hl
+      0002C8 7C               [ 4]  622 	ld	a, h
+      0002C9 F8 04            [12]  623 	ldhl	sp,	#4
+      0002CB 32               [ 8]  624 	ld	(hl-), a
+      0002CC 2A               [ 8]  625 	ld	a, (hl+)
+      0002CD 4F               [ 4]  626 	ld	c, a
+      0002CE 46               [ 8]  627 	ld	b, (hl)
+      0002CF 03               [ 8]  628 	inc	bc
+      0002D0 03               [ 8]  629 	inc	bc
+      0002D1 F8 07            [12]  630 	ldhl	sp,	#7
+      0002D3 3A               [ 8]  631 	ld	a, (hl-)
+      0002D4 2B               [ 8]  632 	dec	hl
+      0002D5 77               [ 8]  633 	ld	(hl), a
+      0002D6 2A               [ 8]  634 	ld	a, (hl+)
+      0002D7 5F               [ 4]  635 	ld	e, a
+      0002D8 1C               [ 4]  636 	inc	e
+      0002D9 C5               [16]  637 	push	bc
+      0002DA 7E               [ 8]  638 	ld	a, (hl)
+      0002DB CDr28r02         [24]  639 	call	_CheckBackgroundTileIsWalkable
+      0002DE C1               [12]  640 	pop	bc
+      0002DF 02               [ 8]  641 	ld	(bc), a
+                                    642 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:138: TileSideWalkability[i][j][UP]=CheckBackgroundTileIsWalkable(i,j-1);
+      0002E0 F8 05            [12]  643 	ldhl	sp,	#5
+      0002E2 2A               [ 8]  644 	ld	a, (hl+)
+      0002E3 5F               [ 4]  645 	ld	e, a
+      0002E4 1D               [ 4]  646 	dec	e
+      0002E5 7E               [ 8]  647 	ld	a, (hl)
+      0002E6 CDr28r02         [24]  648 	call	_CheckBackgroundTileIsWalkable
+      0002E9 4F               [ 4]  649 	ld	c, a
+      0002EA F8 03            [12]  650 	ldhl	sp,	#3
+      0002EC 2A               [ 8]  651 	ld	a,	(hl+)
+      0002ED 66               [ 8]  652 	ld	h, (hl)
+      0002EE 6F               [ 4]  653 	ld	l, a
+      0002EF 71               [ 8]  654 	ld	(hl), c
+                                    655 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:139: TileSideWalkability[i][j][RIGHT]=CheckBackgroundTileIsWalkable(i+1,j);
+      0002F0 F8 02            [12]  656 	ldhl	sp,	#2
+      0002F2 5E               [ 8]  657 	ld	e, (hl)
+      0002F3 16 00            [ 8]  658 	ld	d, #0x00
+      0002F5 E1               [12]  659 	pop	hl
+      0002F6 E5               [16]  660 	push	hl
+      0002F7 19               [ 8]  661 	add	hl, de
+      0002F8 E5               [16]  662 	push	hl
+      0002F9 7D               [ 4]  663 	ld	a, l
+      0002FA F8 06            [12]  664 	ldhl	sp,	#6
+      0002FC 77               [ 8]  665 	ld	(hl), a
+      0002FD E1               [12]  666 	pop	hl
+      0002FE 7C               [ 4]  667 	ld	a, h
+      0002FF F8 05            [12]  668 	ldhl	sp,	#5
+      000301 32               [ 8]  669 	ld	(hl-), a
+      000302 2A               [ 8]  670 	ld	a, (hl+)
+      000303 4F               [ 4]  671 	ld	c, a
+      000304 2A               [ 8]  672 	ld	a, (hl+)
+      000305 47               [ 4]  673 	ld	b, a
+      000306 03               [ 8]  674 	inc	bc
+      000307 56               [ 8]  675 	ld	d, (hl)
+      000308 6A               [ 4]  676 	ld	l, d
+                                    677 ;	spillPairReg hl
+                                    678 ;	spillPairReg hl
+      000309 2C               [ 4]  679 	inc	l
+      00030A C5               [16]  680 	push	bc
+      00030B D5               [16]  681 	push	de
+      00030C E5               [16]  682 	push	hl
+      00030D F8 0D            [12]  683 	ldhl	sp,	#13
+      00030F 5E               [ 8]  684 	ld	e, (hl)
+      000310 E1               [12]  685 	pop	hl
+      000311 7D               [ 4]  686 	ld	a, l
+      000312 CDr28r02         [24]  687 	call	_CheckBackgroundTileIsWalkable
+      000315 D1               [12]  688 	pop	de
+      000316 C1               [12]  689 	pop	bc
+      000317 02               [ 8]  690 	ld	(bc), a
+                                    691 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:140: TileSideWalkability[i][j][LEFT]=CheckBackgroundTileIsWalkable(i-1,j);
+      000318 F8 04            [12]  692 	ldhl	sp,	#4
+      00031A 2A               [ 8]  693 	ld	a, (hl+)
+      00031B 4F               [ 4]  694 	ld	c, a
+      00031C 46               [ 8]  695 	ld	b, (hl)
+      00031D 03               [ 8]  696 	inc	bc
+      00031E 03               [ 8]  697 	inc	bc
+      00031F 03               [ 8]  698 	inc	bc
+      000320 6A               [ 4]  699 	ld	l, d
+                                    700 ;	spillPairReg hl
+                                    701 ;	spillPairReg hl
+      000321 2D               [ 4]  702 	dec	l
+      000322 C5               [16]  703 	push	bc
+      000323 E5               [16]  704 	push	hl
+      000324 F8 0B            [12]  705 	ldhl	sp,	#11
+      000326 5E               [ 8]  706 	ld	e, (hl)
+      000327 E1               [12]  707 	pop	hl
+      000328 7D               [ 4]  708 	ld	a, l
+      000329 CDr28r02         [24]  709 	call	_CheckBackgroundTileIsWalkable
+      00032C C1               [12]  710 	pop	bc
+      00032D 02               [ 8]  711 	ld	(bc), a
+                                    712 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:135: for(uint8_t j=0;j<27;j++){
+      00032E F8 07            [12]  713 	ldhl	sp,	#7
+      000330 34               [12]  714 	inc	(hl)
+      000331 C3rAEr02         [16]  715 	jp	00104$
+      000334                        716 00108$:
+                                    717 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:134: for(uint8_t i=0;i<21;i++){
+      000334 F8 06            [12]  718 	ldhl	sp,	#6
+      000336 34               [12]  719 	inc	(hl)
+      000337 C3r8Dr02         [16]  720 	jp	00107$
+      00033A                        721 00109$:
+                                    722 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:145: }
+      00033A E8 08            [16]  723 	add	sp, #8
+      00033C C9               [16]  724 	ret
+                                    725 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:147: void UpdateGlobalFrameCounters(){
+                                    726 ;	---------------------------------
+                                    727 ; Function UpdateGlobalFrameCounters
+                                    728 ; ---------------------------------
+      00033D                        729 _UpdateGlobalFrameCounters::
+                                    730 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:148: }
+      00033D C9               [16]  731 	ret
+                                    732 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:150: void BlinkLevelBlueAndWhite_Halting(){
+                                    733 ;	---------------------------------
+                                    734 ; Function BlinkLevelBlueAndWhite_Halting
+                                    735 ; ---------------------------------
+      00033E                        736 _BlinkLevelBlueAndWhite_Halting::
+                                    737 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:151: }
+      00033E C9               [16]  738 	ret
+                                    739 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:153: void main(){
+                                    740 ;	---------------------------------
+                                    741 ; Function main
+                                    742 ; ---------------------------------
+      00033F                        743 _main::
+                                    744 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:155: SetupGameplay();
+      00033F CDr2Ar02         [24]  745 	call	_SetupGameplay
+                                    746 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:156: StartGameplay();
+      000342 CDr27r02         [24]  747 	call	_StartGameplay
+                                    748 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:158: while(TRUE){        
+      000345                        749 00114$:
+                                    750 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:160: joypadPrevious=joypadCurrent;
+      000345 FAr00r00         [16]  751 	ld	a, (#_joypadCurrent)
+      000348 EAr00r00         [16]  752 	ld	(#_joypadPrevious),a
+                                    753 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:161: joypadCurrent=joypad();
+      00034B CDr00r00         [24]  754 	call	_joypad
+      00034E 21r00r00         [12]  755 	ld	hl, #_joypadCurrent
+      000351 77               [ 8]  756 	ld	(hl), a
+                                    757 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:164: if((joypadCurrent & J_SELECT) && !(joypadPrevious & J_SELECT)){
+      000352 CB 76            [12]  758 	bit	6, (hl)
+      000354 28 11            [12]  759 	jr	Z, 00102$
+      000356 FAr00r00         [16]  760 	ld	a, (#_joypadPrevious)
+      000359 CB 77            [ 8]  761 	bit	6, a
+      00035B 20 0A            [12]  762 	jr	NZ, 00102$
+                                    763 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:165: enableDebug = !enableDebug;
+      00035D 21r00r00         [12]  764 	ld	hl, #_enableDebug
+      000360 7E               [ 8]  765 	ld	a, (hl)
+      000361 D6 01            [ 8]  766 	sub	a,#0x01
+      000363 3E 00            [ 8]  767 	ld	a, #0x00
+      000365 17               [ 4]  768 	rla
+      000366 77               [ 8]  769 	ld	(hl), a
+      000367                        770 00102$:
+                                    771 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:168: UpdateGlobalFrameCounters();
+      000367 CDr3Dr03         [24]  772 	call	_UpdateGlobalFrameCounters
+                                    773 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:169: UpdateHUD();
+      00036A CDr00r00         [24]  774 	call	_UpdateHUD
+                                    775 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:170: UpdateAllGhosts();
+      00036D CDr00r00         [24]  776 	call	_UpdateAllGhosts
+                                    777 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:171: UpdatePacman();
+      000370 CDr00r00         [24]  778 	call	_UpdatePacman
+                                    779 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:172: HandleDotConsumption();
+      000373 CDr00r00         [24]  780 	call	_HandleDotConsumption
+                                    781 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:173: UpdateCameraPosition(5);
+      000376 3E 05            [ 8]  782 	ld	a, #0x05
+      000378 CDr00r00         [24]  783 	call	_UpdateCameraPosition
+                                    784 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:178: if(pacman.state==0){
+      00037B FAr07r00         [16]  785 	ld	a, (#(_pacman + 7) + 0)
+      00037E B7               [ 4]  786 	or	a, a
+      00037F 20 1C            [12]  787 	jr	NZ, 00111$
+                                    788 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:182: if(!ghostsResetting)PacmanDeathAnimation_Halting();
+      000381 FAr00r00         [16]  789 	ld	a, (#_ghostsResetting)
+      000384 B7               [ 4]  790 	or	a, a
+      000385 20 03            [12]  791 	jr	NZ, 00105$
+      000387 CDr00r00         [24]  792 	call	_PacmanDeathAnimation_Halting
+      00038A                        793 00105$:
+                                    794 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:183: ghostsResetting=1;
+      00038A 21r00r00         [12]  795 	ld	hl, #_ghostsResetting
+      00038D 36 01            [12]  796 	ld	(hl), #0x01
+                                    797 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:186: if(ghostsReady){
+      00038F FAr00r00         [16]  798 	ld	a, (#_ghostsReady)
+      000392 B7               [ 4]  799 	or	a, a
+      000393 28 18            [12]  800 	jr	Z, 00112$
+                                    801 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:187: SetupGameplay();
+      000395 CDr2Ar02         [24]  802 	call	_SetupGameplay
+                                    803 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:188: StartGameplay();
+      000398 CDr27r02         [24]  804 	call	_StartGameplay
+      00039B 18 10            [12]  805 	jr	00112$
+      00039D                        806 00111$:
+                                    807 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:196: else if(dotsRemaining==0){
+      00039D 21r01r00         [12]  808 	ld	hl, #_dotsRemaining + 1
+      0003A0 3A               [ 8]  809 	ld	a, (hl-)
+      0003A1 B6               [ 8]  810 	or	a, (hl)
+      0003A2 20 09            [12]  811 	jr	NZ, 00112$
+                                    812 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:197: BlinkLevelBlueAndWhite_Halting();
+      0003A4 CDr3Er03         [24]  813 	call	_BlinkLevelBlueAndWhite_Halting
+                                    814 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:198: SetupGameplay();
+      0003A7 CDr2Ar02         [24]  815 	call	_SetupGameplay
+                                    816 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:199: StartGameplay();
+      0003AA CDr27r02         [24]  817 	call	_StartGameplay
+      0003AD                        818 00112$:
+                                    819 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:202: wait_vbl_done();
+      0003AD CDr00r00         [24]  820 	call	_wait_vbl_done
+                                    821 ;D:\Github\Gameboy-Homebrew\GBDK-Tutorials\Games\Pacman-From-Scratch\source\default\main.c:205: }
+      0003B0 18 93            [12]  822 	jr	00114$
+                                    823 	.area _CODE
+                                    824 	.area _INITIALIZER
+                                    825 	.area _CABS (ABS)

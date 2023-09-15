@@ -1,0 +1,62 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+    _LCDC_REG                                                      ****** GX
+    _SCX_REG                                                       ****** GX
+  7 __xinit__keyboarddata                                          000000 R
+  7 __xinit__keyboardmap                                           0002D0 R
+  7 __xinit__welcomemap                                            000438 R
+  0 _addtoplayername                                               000020 GR
+  0 _askfornamescreen                                              00012E GR
+  1 _cursor                                                        000000 GR
+  0 _drawplayername                                                00005C GR
+  1 _i                                                             000006 GR
+  0 _isWithinKeyboard                                              00009E GR
+    _joypad                                                        ****** GX
+  2 _keyboarddata                                                  000000 GR
+  2 _keyboardmap                                                   0002D0 GR
+  1 _keydown                                                       000004 GR
+  0 _main                                                          0002AC GR
+  0 _maxcursorx                                                    00001E GR
+  0 _maxcursory                                                    00001F GR
+  0 _mincursorx                                                    00001C GR
+  0 _mincursory                                                    00001D GR
+  1 _namecharacterindex                                            000005 GR
+  0 _performantdelay                                               000000 GR
+  1 _playerhasname                                                 000007 GR
+    _playername                                                    ****** GX
+  0 _removefromplayername                                          000049 GR
+  0 _resetcharactername                                            0000DC GR
+  0 _sayhelloscreen                                                0000FB GR
+    _set_bkg_data                                                  ****** GX
+    _set_bkg_tiles                                                 ****** GX
+    _set_sprite_data                                               ****** GX
+    _shadow_OAM                                                    ****** GX
+  0 _sprites                                                       00000C GR
+  0 _updateplayername                                              00006E GR
+    _wait_vbl_done                                                 ****** GX
+    _waitpadup                                                     ****** GX
+  2 _welcomemap                                                    000438 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size    2C6   flags    0
+   1 _DATA                                      size      8   flags    0
+   2 _INITIALIZED                               size    5A0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size    5A0   flags    0
+   8 _CABS                                      size      0   flags    8
+
